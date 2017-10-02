@@ -1,0 +1,1338 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style type="text/css">
+            
+            /* fonts */
+            @font-face {
+                font-family: "RomanFont Bold";
+                src: url("Font/CinzelDecorative-Bold.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont";
+                src: url("Font/CinzelDecorative-Regular.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont Black";
+                src: url("Font/CinzelDecorative-Black.ttf");
+            }
+            
+            body{
+                padding: 0;
+                margin: 0;
+                background-image: url(Images/background3.jpg);
+                background-repeat: repeat-y;
+                background-size: contain;
+            }
+            
+            /* scroll bars*/
+            #rules::-webkit-scrollbar-track
+            {
+                background-color: "gold";
+            }
+
+            #rules::-webkit-scrollbar
+            {
+                width: 5px;
+                background-color: none;
+            }
+
+            #rules::-webkit-scrollbar-thumb
+            {
+                background-color: gold
+            }
+            
+            body::-webkit-scrollbar-track
+            {
+                background-color: "gold";
+            }
+
+            body::-webkit-scrollbar
+            {
+                width: 5px;
+                background-color: white;
+            }
+
+            body::-webkit-scrollbar-thumb
+            {
+                background-color: gold
+            }
+            
+            #header{
+                width: 100%;
+                box-sizing: border-box;
+                position: fixed;
+                height: 100px;
+                background-color: white;
+                border-bottom: 15px solid gold;
+                font-family: "RomanFont";
+                padding: 5px;
+                padding-left: 20px;
+                font-size: 60px;
+                color: gold;
+                text-shadow: 1px 0px 0px black;
+                z-index: 9999;
+                display: flex;
+            }
+            
+            #bodytab{
+                width: 70%;
+                height: 700px;
+                margin: 0 auto;
+                padding-top: 150px;
+            }
+            
+            #table{
+                width: 100%;
+                height: 500px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-image: url(Images/table.png);
+            }
+            
+            .side{
+                position: absolute;
+                height: 375px;
+                padding: 5px;
+                box-sizing: border-box;
+                width: 12%;
+                top: 25%;
+                background-color: rgba(0, 0, 0, 0.4);
+                color: gold;
+                text-align: center;
+                border: 3px double gold;
+                font-family: "RomanFont Bold";
+            }
+            
+            #rules{
+                right: 1.5%;
+                overflow-y: scroll;
+                overflow-x: hidden;
+            }
+            #bank{
+                left: 1.5%;
+            }
+            #money{
+                color: lime;
+                text-shadow: 2px 0px 0px green;
+                padding-top: 70%;
+                font-size: 300%;
+            }
+            
+            #cpu1{
+                position: absolute;
+                top: 33%;
+                left: 35.5%;
+                font-size: 20px;
+                color: gold;
+                text-shadow: 2px 0px 0px black;
+                font-family: "RomanFont";
+            }
+            #cpu2{
+                position: absolute;
+                top: 33%;
+                right: 37.5%;
+                font-size: 20px;
+                color: gold;
+                text-shadow: 2px 0px 0px black;
+                font-family: "RomanFont";
+            }
+            
+            .hand{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 25%;
+                height: 60px;
+                width: 180px;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            #cpu1hand{
+                left: 31%;
+            }
+            #cpu2hand{
+                left: 55%;
+            }
+            
+            #player{
+                position: absolute;
+                font-size: 35px;
+                font-family: "RomanFont";
+                color: gold;
+                text-shadow: 2px 0px 0px black;
+                top: 56%;
+                left: 41%;
+            }
+            #playerhand{
+                position: absolute;
+                display: flex;
+                top: 62%;
+                left: 38.5%;
+                height: 90px;
+                width: 295px;
+                background-color: rgba(0, 0, 0, 0.4);
+                color: white;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+            }
+            
+            .move{
+                position: absolute;
+                top: 83%;
+                height: 85px;
+                width: 250px;
+                background-color: rgba(0, 0, 0, 0.4);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0 auto;
+                box-sizing: border-box;
+                color: gold;
+                font-family: "RomanFont";
+                text-shadow: 1px 0px 0px black;
+                font-size: 30px;
+                border: 1px solid black;
+            }
+            
+            .move:hover{
+                border: 1px solid white;
+                background-color: rgba(0, 0, 0, 1);
+                cursor: pointer;
+            }
+            
+            .move:active{
+                background-color: rgba(255, 255, 255, 0.4);
+            }
+            .move:visited{
+                background-color: rgba(0, 0, 0, 0.4);
+                color: gold;
+            }
+            
+            #bet{
+                
+            }
+            #raise{
+                left: 40%;
+            }
+            #fold{
+                left: 65%;
+            }
+            
+            #deck{
+                position: absolute;
+                top: 42.5%;
+                left: 25%;
+                width: 70px;
+                height: auto;
+                z-index: 9991;
+            }
+            
+            .cardposition{
+                transform-style: preserve-3d;
+                position: absolute;
+                top: 43%;
+                left: 25%;
+                padding: 5px;
+                height: 80px;
+                width: 55px;
+                display: none;
+                z-index: 9990;
+            }
+            
+            .cardposition img{
+                height: 80px;
+                width: auto;
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+            }
+            
+            .front img{
+                transform: rotateY(180deg);
+            }
+            
+            .front, .back{
+                position: absolute;
+            }
+            
+            #card1{
+                 top: 62%;
+                 left: 38.5%;
+                 transform: scale(1);
+            }
+            #card2{
+                 left: 42.75%;
+                 top: 62%;
+                 transform: scale(1);
+            }
+            #card3{
+                 left: 47%;
+                 top: 62%;
+                 transform: scale(1);
+            }
+            #card4{
+                 left: 51.25%;
+                 top: 62%;
+                 transform: scale(1);
+            }
+            #card5{
+                 left: 55.5%;
+                 top: 62%;
+                 transform: scale(1);
+            }
+            
+            #cpucards img{
+                height: 50px;
+                width: auto;
+                padding: 0;
+                position: absolute;
+                transition: all 2s;
+                display: none;
+            }
+            
+            #cpucards, #cpucards2{
+                width: 180px;
+                display: flex;
+                justify-content: center;
+            }
+            
+            #cpucards2 img{
+                height: 50px;
+                padding: 0;
+                position: absolute;
+                transition: all 2s;
+                display: none;
+            }
+            
+            #currentbet{
+                margin-top: 50%;
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70px;
+                display: none;
+                width: 90%;
+                color: lime;
+            }
+            
+            #deal{
+                margin-top: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 70px;
+                border: 1px solid black;
+            }
+            
+            #deal:hover{
+                cursor: pointer;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            
+            .bet1, .bet2{
+                position: absolute;
+                height: 15px;
+                width: 15px;
+                background-image: url(Images/chips.png);
+                background-size: cover;
+            }
+            
+            .pbet{
+                position: absolute;
+                top: 65%;
+                left: 65%;
+                z-index: 9997;
+                height: 50px;
+                width: 50px;
+                background-image: url(Images/chips.png);
+                background-size: cover;
+            }
+            
+            #cpu1bet{
+                position: absolute;
+                top: 30%;
+                left: 25%;
+            }
+            
+            #cpu2bet{
+                position: absolute;
+                top: 30%;
+                left: 70.5%;
+            }
+            
+            #currentpool{
+                position: absolute;
+                height: 50px;
+                width: 70px;
+                top: 45vh;
+                left: 54vw;
+                color: lime;
+                font-family: "RomanFont";
+            }
+            
+            #reset{
+                font-size: 30px;
+                color: red;
+                font-family: "RomanFont";
+                position: absolute;
+                top: 83.5%;
+                left: 41%;
+                padding: 20px;
+                display: none;
+            }
+            
+            #reset:hover{
+                background-color: lime;
+                border-radius: 50%;
+                cursor: pointer;
+                
+            }
+            
+           .fa{
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+                text-align: center;
+                padding: 10px;
+                transition: transform 0.5s;
+                border-radius: 50%;  
+                width: 20px;
+            }
+            
+            .fa:hover{
+                transform: scale(1.2);
+            }
+            
+            #fbicon{
+                background-color: #3B5998;
+                color: white;
+            }
+            #ppicon{
+                background-color: #3b7bbf;
+                color: white;
+            }
+            #steamicon{
+                color: white;
+                background-color: black;
+            }
+            
+            #icons{
+                flex-grow: 1;
+                text-align: right;
+                padding-right: 15px;
+            }
+
+            #notification{
+              background: #3b7bbf;
+              display: flex;
+              border-radius: 4px;
+              padding-left: 28px;
+              position: absolute;
+              align-items: center;
+              left: -168.5px;
+              top: 90px;
+              font-size: 17px;
+              color: black;
+              font-family: Ariel;
+              text-shadow: none;
+            }
+            
+            #notification-after{
+              border: solid transparent;
+              top: -30px;
+              left: -65px;
+              content: " ";
+              height: 0;
+              width: 0;
+              position: relative;
+              border-bottom-color: #3b7bbf;
+              border-width: 15px;
+            }
+            
+            #notbox{
+                position: relative;
+                display: none;
+                height: 0px;
+                transform-origin: -95px 75px;
+            }
+            
+            
+            @keyframes dealcard1{
+                0%{left: 25%; top: 43%; transform: scale(0.7)}
+                90%{left: 38.5%; top: 62%; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @keyframes dealcard2{
+                0%{left: 25%; top: 43%; transform: scale(0.7)}
+                92%{left: 42.75%; top: 62%; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @keyframes dealcard3{
+                0%{left: 25%; top: 43%; transform: scale(0.7)}
+                94%{left: 47%; top: 62%; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @keyframes dealcard4{
+                0%{left: 25%; top: 43%; transform: scale(0.7)}
+                96%{left: 51.25%; top: 62%; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @keyframes dealcard5{
+                0%{left: 25%; top: 43%; transform: scale(0.7)}
+                98%{left: 55.5%; top: 62%; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            
+            @keyframes movecpu1{
+                from{transform: translateX(-400%) translateY(280%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            @keyframes movecpu2{
+                from{transform: translateX(-1350%) translateY(280%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            
+            @keyframes bet{
+                from{transform: translateY(0%) translateX(0%)}
+                to{transform: translateY(-320%) translateX(-500%)}
+            }
+            
+            @keyframes bet1{
+                from{top: 0%; left: 0%; transform: scale(1)}
+                to{top: 15vh; left: 25vw; transform: scale(3.4)}
+            }
+            @keyframes bet2{
+                from{top: 0%; left: 0%; transform: scale(1)}
+                to{top: 15vh; left: -25vw; transform: scale(3.4)}
+            }
+            
+            @keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            
+        </style>
+    </head>
+    <body onload="onload()">
+        <div id="header">
+            Cash Money Casino
+            <div id="icons">
+                <a href="#" class="fa fa-facebook" id="fbicon"></a>
+                <a href="https://paypal.me/DarbyEdwards/5" class="fa fa-paypal" id="ppicon"></a>
+                <a href="https://steamcommunity.com/tradeoffer/new/?partner=226682562&token=36Djf6Tb" class="fa fa-steam" id="steamicon"></a>
+            </div>
+            <div id="notbox">
+                <div id="notification">Donate please!<div id="notification-after"></div></div>
+            </div>
+        </div>
+        <div id="bodytab">
+            <div id="table">
+                <!-- EVERYTHING ON THE TABLE !-->
+                <img id="deck" src="Images/deck.png">
+                <div id="currentpool"></div>
+                <div id="cpu1">JACK</div>
+                    <div id="CPU1hand" class="hand">
+                        <div id="cpucards">
+                                <img src="Images/Cards/card_back.png">
+                                <img src="Images/Cards/card_back.png">
+                                <img src="Images/Cards/card_back.png">
+                                <img src="Images/Cards/card_back.png">
+                                <img src="Images/Cards/card_back.png">
+                        </div>
+                    </div>
+                <div id="cpu2">JILL</div>
+                    <div id="CPU2hand" class="hand">
+                        <div id="cpucards2">
+                            <img src="Images/Cards/card_back.png">
+                            <img src="Images/Cards/card_back.png">
+                            <img src="Images/Cards/card_back.png">
+                            <img src="Images/Cards/card_back.png">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
+                    </div>
+
+                <div id="player">YOUR HAND:</div>
+                    <div id="Playerhand"></div>
+                
+                <!-- Player cards !-->
+                <div id="card1" class="cardposition">
+                    <div class="front">
+                        <img src="Images/Cards/Clubs1.png" id="card1face">
+                    </div>
+                    <div class="back">
+                        <img src="Images/Cards/card_back.png">
+                    </div>
+                </div>
+                <div id="card2" class="cardposition">
+                    <div class="front">
+                        <img src="Images/Cards/Clubs1.png" id="card2face">
+                    </div>
+                    <div class="back">
+                        <img src="Images/Cards/card_back.png">
+                    </div>
+                </div>
+                <div id="card3" class="cardposition">
+                    <div class="front">
+                        <img src="Images/Cards/Clubs1.png" id="card3face">
+                    </div>
+                    <div class="back">
+                        <img src="Images/Cards/card_back.png">
+                    </div>
+                </div>
+                <div id="card4" class="cardposition">
+                    <div class="front">
+                        <img src="Images/Cards/Clubs1.png" id="card4face">
+                    </div>
+                    <div class="back">
+                        <img src="Images/Cards/card_back.png">
+                    </div>
+                </div>
+                <div id="card5" class="cardposition">
+                    <div class="front">
+                        <img src="Images/Cards/Clubs1.png" id="card5face">
+                    </div>
+                    <div class="back">
+                        <img src="Images/Cards/card_back.png">
+                    </div>
+                </div>
+                
+                <!-- BETS !-->
+                <div id="playerchips">
+                    <!-- chips are added by the onload function here !-->
+                </div>
+                <div id="cpu1bet" class="bet"></div>
+                <div id="cpu2bet" class="bet"></div>
+                
+            </div>
+            <div id="buttons">
+                <div id="bet" class="move" onclick="bet('Player')">BET</div>
+                <div id="raise" class="move" onclick="raise('Player')">RAISE</div>
+                <div id="fold" class="move" onclick="fold('Player')">FOLD</div>
+            </div>
+        </div>
+        <div id="rules" class="side">
+            RULES<br>(best to worst)<br><div style="color: black; text-align: left; font-size: 18px; font-family: Ariel;">1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card</div>
+        </div>
+        <div id="bank" class="side">
+            BANK <br><div id="money">$500</div>
+            <div id="currentbet"></div>
+            <div id="deal" onclick="deal()">DEAL</div>
+        </div>
+        <div id="reset" onclick="reset()">New Game!</div>
+    </body>
+    <head>
+        <script type="text/javascript">
+            var Player_cards = [];
+            var CPU1_cards = [];
+            var CPU2_cards = [];
+            var dealt = false;
+            var Playerbank = 500;
+            var currentpool = 0;
+            var Players = ["Player", "CPU1", "CPU2"];
+            var CPU1bank, CPU2bank;
+            var turn;
+            var round = 1;
+            var logpara;
+            
+            var CPU1chipsbet = 0;
+            var CPU2chipsbet = 0;
+            var Playerchipsbet = 0;
+            var totalchips = 0;
+            
+            var Playerfolded = false;
+            var CPU1folded = false;
+            var CPU2folded = false;
+            var CPU1moves = 0;
+            var CPU2moves = 0;
+            var Playermoves = 0;
+            
+            
+            function onload(){
+                
+                donate();
+                
+                for(i = 1; i < 15; i++){
+                    setTimeout(function(){donate()}, i*30000);
+                }
+                
+                function donate(){
+                    setTimeout(function(){document.getElementById("notbox").style.display = "block";}, 2000);
+                    document.getElementById("notbox").style.animation = "notification 5s ease 0s forwards";
+                    setTimeout(function(){document.getElementById("notbox").style.display = "none"}, 7000);
+                }
+                
+            }
+            
+            function deal(){
+                if(dealt == false){
+                    
+                    CPU1bank = Math.ceil((Math.ceil(Math.random()*(Playerbank*2) + 200))/50) * 50;
+                    CPU2bank = Math.ceil((Math.ceil(Math.random()*(Playerbank*2) + 200))/50) * 50;
+                    
+                    GenerateDeck();
+                    GenerateResult();
+                    animations();
+                }
+                
+                document.getElementById("deal").style.display = "none";
+                dealt = true;
+                
+                document.getElementById("currentbet").style.display = "block";
+                document.getElementById("currentbet").innerHTML = "Current bet: $" + currentbet;
+                
+                //create all the chips divs
+                let a = Playerbank / 50;
+                for(i = 1; i <= a; i++){
+                    let x = Math.random()*20;
+                    let y = Math.random()*20;
+                    document.getElementById("playerchips").innerHTML += "<div id='chip"+i+"' class='pbet' style='transform: translateX("+x+"px) translateY("+y+"px)'></div>";
+                }
+                let b = CPU1bank / 50;
+                for(i = 1; i <= b; i++){
+                    let x = Math.random()*20;
+                    let y = Math.random()*20;
+                    document.getElementById("cpu1bet").innerHTML += "<div id='CPU1chip"+i+"' class='bet1' style='transform: translateX("+x+"px) translateY("+y+"px)'></div>";
+                }
+                let c = CPU2bank / 50;
+                for(i = 1; i <= c; i++){
+                    let x = Math.random()*20;
+                    let y = Math.random()*20;
+                    document.getElementById("cpu2bet").innerHTML += "<div id='CPU2chip"+i+"' class='bet2' style='transform: translateX("+x+"px) translateY("+y+"px)'></div>";
+                }
+                
+                
+                nextTurn(0);
+                generateLog();
+            }
+            
+            function GenerateDeck(){
+                var TempDeck = [];
+                var Hands = []
+                
+                //Generate array with 52 numbers
+                for(i = 1; i <= 52; i++){
+                    TempDeck.push(i)
+                }
+                
+                //Assign players a random set of 5 numbers and remove those numbers from the array of 52
+                for(i = 0; i < Players.length; i++){
+                    var Hand = [];
+                    for(c = 0; c <= 4; c++){
+                        var RandomSelection = Math.floor(Math.random()*TempDeck.length);
+                        Hand.push(TempDeck[RandomSelection]);
+                        TempDeck.splice(RandomSelection, 1);
+                    }
+                    Hands.push(Hand.toString());
+                }
+                
+                var Player = Hands[0];
+                var CPU1 = Hands[1];
+                var CPU2 = Hands[2];
+                
+                //Convert the hand into cards: 1-13 = spades, 14-26 = hearts, 27-39 = clubs, 40-52 = diamonds
+                var newname;
+                
+                for(i = 0; i < Players.length; i ++){
+                    var suit;
+                    var value;
+                    
+                    for(e = 0; e <= 4; e++){
+                        var n = Players[i]
+                        var playertype = eval(n).split(',');
+                        result = Math.ceil(playertype[e] / 13);
+
+                        switch(result){
+                            case 0:
+                                suit = "Spades";
+                                value = playertype[e];
+                                break;
+                                
+                            case 1:
+                                suit = "Spades";
+                                value = playertype[e];
+                                break;
+                                
+                            case 2:
+                                suit = "Hearts";
+                                value = playertype[e] - (1*13);
+                                break;
+                                
+                            case 3:
+                                suit = "Clubs";
+                                value = playertype[e] - (2*13);
+                                break;
+                                
+                            case 4:
+                                suit = "Diamonds";
+                                value = playertype[e] - (3*13);
+                                break;
+                        }
+                        newname = eval(Players[i] + "_cards");
+                        newname.push({card:value, suit: suit});
+                    }
+                    newname.sort(function(a,b){return a.card - b.card});
+                    
+                }
+                //Results: Player_cards, CPU1_cards, CPU2_cards
+            }
+            
+            function animations(){
+                let n = document.getElementById("cpucards");
+                let z = document.getElementById("cpucards2");
+                
+                for(i = 0; i <= 4; i ++){
+                    n.getElementsByTagName("img")[i].style.animation = "movecpu1 0.5s";
+                    n.getElementsByTagName("img")[i].style.display = "block";
+                    
+                    z.getElementsByTagName("img")[i].style.animation = "movecpu2 0.5s";
+                    z.getElementsByTagName("img")[i].style.display = "block";
+                }
+                
+                setTimeout(function(){
+                    for(i = 0; i <= 4; i++){
+                        n.getElementsByTagName("img")[i].style.position = "relative";
+                        z.getElementsByTagName("img")[i].style.position = "relative";
+                    }
+                }, 500)
+                
+                var card1 = Player_cards[0].suit + Player_cards[0].card + ".png";
+                var card2 = Player_cards[1].suit + Player_cards[1].card + ".png";
+                var card3 = Player_cards[2].suit + Player_cards[2].card + ".png";
+                var card4 = Player_cards[3].suit + Player_cards[3].card + ".png";
+                var card5 = Player_cards[4].suit + Player_cards[4].card + ".png";
+                
+                document.getElementById("card1face").src = "Images/Cards/" + card1;
+                document.getElementById("card2face").src = "Images/Cards/" + card2;
+                document.getElementById("card3face").src = "Images/Cards/" + card3;
+                document.getElementById("card4face").src = "Images/Cards/" + card4;
+                document.getElementById("card5face").src = "Images/Cards/" + card5;
+                
+                
+                for(i = 0; i <= 4; i++){
+                    document.getElementsByClassName("cardposition")[i].style.display = "block";
+                }
+                document.getElementById("card1").style.animation = "dealcard1 2s forwards";
+                document.getElementById("card2").style.animation = "dealcard2 2s forwards";
+                document.getElementById("card3").style.animation = "dealcard3 2s forwards";
+                document.getElementById("card4").style.animation = "dealcard4 2s forwards";
+                document.getElementById("card5").style.animation = "dealcard5 2s forwards";
+            }
+            
+            var currentbet = 50;
+            var needbetmessage = true;
+            
+            function bet(name){
+                if(dealt == true && turn == name){
+                    let bank = eval(name + "bank");
+                    if(needbetmessage && bank-currentbet >= 0){
+                        let n;
+                        switch(name){
+                            case "Player":
+                                n = "Player";
+                                break;
+                            
+                            case "CPU1":
+                                n = "Jack";
+                                break;
+                                
+                            case "CPU2":
+                                n = "Jill";
+                                break;
+                                   }
+                        
+                        logpara.innerHTML += "<br>"+n+" bets $" + currentbet;
+                    }else{
+                        needbetmessage = true;
+                    }; 
+                    
+                    if(bank - currentbet >= 0){
+                        switch(name){
+                            case "Player":
+                                Playerbank -= currentbet;
+                                break;
+                                
+                            case "CPU1":
+                                CPU1bank -= currentbet;
+                                break;
+                                
+                            case "CPU2":
+                                CPU2bank -= currentbet;
+                                break;
+                        }
+                            
+                        if(name == "Player"){
+                        Playermoves += 1;
+                        document.getElementById("money").innerHTML = "$" + Playerbank;
+                        
+                        let numberchips = currentbet / 50;
+                        let start = Playerchipsbet + 1;
+                            for(i = start; i <= numberchips + start - 1; i++){
+                                let chipname = "chip" + (i);
+                                let sec = Math.random()*2;
+                                document.getElementById(chipname).style.animation = "bet "+sec+"s forwards";
+                                //setTimeout(function(){document.getElementById(chipname).style.position = "relative";}, sec + 50);
+                                Playerchipsbet += 1;
+                                totalchips += 1;
+                            }
+                            nextTurn(1);
+                        }
+                        else if (name == "CPU1"){
+                            let numberchips = currentbet / 50;
+                            let start = CPU1chipsbet + 1;
+                            for(i = start; i <= numberchips + start - 1; i++){
+                                let chipname = "CPU1chip" + (i);
+                                let sec = Math.random()*2;
+                                document.getElementById(chipname).style.animation = "bet1 "+sec+"s forwards";
+                                CPU1chipsbet += 1;
+                                totalchips += 1;
+                            }
+                            
+                            nextTurn(2);
+                            
+                        }
+                        else if(name == "CPU2"){
+                            let numberchips = currentbet / 50;
+                            let start = CPU2chipsbet + 1;
+                            for(i = start; i <= numberchips + start - 1; i++){
+                                let chipname = "CPU2chip" + (i);
+                                let sec = Math.random()*2;
+                                document.getElementById(chipname).style.animation = "bet2 "+sec+"s forwards";
+                                CPU2chipsbet += 1;
+                                totalchips += 1;
+                            }
+                            
+                            nextTurn(0);
+                        }
+                        currentpool += currentbet;
+                        document.getElementById("currentpool").innerHTML = "$"+currentpool;
+                        document.getElementById("currentbet").innerHTML = "Current bet: $" + currentbet;
+                    }
+                    else if(bank - currentbet <= 0){
+                        if(turn == "Player"){
+                            alert("You don't have enough money in the bank! Log in to deposit more money.");
+                        }
+                        fold("Player");
+                    }
+                    else{
+                        if(turn == "Player"){
+                        alert("You've already bet this round");
+                        }
+                    }
+                }
+            }
+            
+            function raise(name){
+                if(dealt == true && name == turn){
+                currentbet += 50;
+                needbetmessage = false;
+                bet(name);
+                
+                let n;
+                switch(name){
+                    case "Player":
+                        n = "Player";
+                        break;
+                        
+                    case "CPU1":
+                        n = "Jack";
+                        break;
+                        
+                    case "CPU2":
+                        n = "Jill";
+                        break;
+                           }
+                logpara.innerHTML += "<br>"+n+" raises bet to $" + currentbet;
+                }
+            }
+            
+            function fold(name){
+                if(dealt == true && everyonemoved == false){
+                    if(name == "Player" && turn == "Player"){
+                        document.getElementById("buttons").style.display = "none";
+                        logpara.innerHTML += "<br>Player Folds";
+                        document.getElementById("Playerhand").innerHTML = 'FOLDED!';
+                        
+                        document.getElementById("card1").style.display = "none";
+                        document.getElementById("card2").style.display = "none";
+                        document.getElementById("card3").style.display = "none";
+                        document.getElementById("card4").style.display = "none";
+                        document.getElementById("card5").style.display = "none";
+                        
+                        
+                        Playerfolded = true;
+                        nextTurn(1);
+                        Playermoves += 2;
+                    }
+                    else if(name == "CPU1"){
+                        logpara.innerHTML += "<br>Jack Folds";
+                        CPU1moves += 2;
+                        CPU1folded = true;
+                        nextTurn(2);
+                    }
+                    else if(name == "CPU2"){
+                        logpara.innerHTML += "<br>Jill Folds";
+                        CPU2moves += 2;
+                        CPU2folded = true;  
+                        nextTurn(0);
+                    }
+                }
+            }
+            
+            var everyonemoved = false;
+            var needawaitingmessage = true;
+            function nextTurn(turncount){
+                  let playername = Players[turncount];
+                  turn = playername;
+                  let divid = playername + "hand";
+                  divid.toString();
+                
+                if(Playermoves >= 2 && CPU2moves >= 2 && CPU1moves >= 2){
+                    everyonemoved = true;
+                    console.log("game over");
+                    
+                    if(needawaitingmessage == true){
+                        logpara.innerHTML += "<br>Awaiting result...";
+                        needawaitingmessage = false;
+                    }
+                    
+                    setTimeout(function(){displayResult();}, 500);
+                    
+                    let divid2 = Players[0] + "hand";
+                    document.getElementById(divid2).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                    document.getElementById(divid2).style.border = "";
+                    
+                    let divid3 = Players[1] + "hand";
+                    document.getElementById(divid3).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                    document.getElementById(divid3).style.border = "";
+                    
+                    let divid4= Players[2] + "hand";
+                    document.getElementById(divid4).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                    document.getElementById(divid4).style.border =   "";
+                    
+                    document.getElementById("buttons").style.display = "none";
+                    
+                }else{
+
+                    
+                  document.getElementById(divid).style.backgroundColor = "rgba(255, 255, 255, 0.5)";
+                  document.getElementById(divid).style.border = "1px solid white";
+                
+                if(turncount > 0){
+                    let folded = eval(Players[turncount-1] + "folded")
+                    
+                    let divid2 = Players[turncount-1] + "hand";
+                    document.getElementById(divid2).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                    document.getElementById(divid2).style.border = "";
+                    
+                    
+                    
+                    CPUmove(turncount);
+                }
+                
+                if(turncount == 0){
+                    if(Playerfolded){
+                        nextTurn(1);
+                        
+                        let a = Players.length - 1;
+                        let divid2 = Players[a] + "hand";
+                        document.getElementById(divid2).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                        document.getElementById(divid2).style.border = "";
+                        
+                    }else{
+                    
+                        let a = Players.length - 1;
+                        let divid2 = Players[a] + "hand";
+
+                        document.getElementById(divid2).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+                        document.getElementById(divid2).style.border = "";
+                    }
+                }
+                }
+            }
+            
+            function CPUmove(cpunumber){
+                setTimeout(function(){
+                    let name = "CPU" + cpunumber;
+                
+                    let bank = eval("CPU" + cpunumber + "bank");
+                    let iffolded = eval(name + "folded");
+                    
+                    if(bank - currentbet >= 0 && everyonemoved == false && !iffolded){
+                        
+                        //Get score of CPU's hand and base the CPU's move off of the score
+                        //rules: 0 to score = raise, score to 4/5 * (10 - score) = bet, else = fold
+                        
+                        let resultname = eval(name+"result");
+                        let score = resultname[resultname.length - 1];
+                        let betarea = score + ((4/5)*(10-score));
+
+                        let cpubettype = Math.ceil(Math.random()*10);
+                        
+                        if(cpubettype < score){
+                            raise(name);
+                        }
+                        else if(cpubettype >= score && cpubettype < betarea){
+                            bet(name);
+                        }
+                        else if(cpubettype >= betarea){
+                            fold(name);
+                        }
+
+                        if(cpunumber == 2){
+                            CPU2moves += 1;
+                            nextTurn(0);
+
+                        }else if(cpunumber == 1){
+                            CPU1moves += 1;
+                        }
+                        
+                    }else if(iffolded && cpunumber == 1){
+                        nextTurn(2)
+                    }else if(iffolded && cpunumber == 2){
+                        nextTurn(0)
+                    }else{
+                        fold(name);
+                    }
+
+                }, 2000);  
+            }
+            
+            function generateLog(){
+                let element = document.getElementById("rules");
+                element.innerHTML = "Game Progress:<br><div style='color: white; text-align: left; font-size: 18px; font-family: Ariel;' id='logpara'></div>";
+                
+                logpara = document.getElementById('logpara');
+            }
+            
+            var Playerresult, CPU1result, CPU2result;
+            function GenerateResult(){
+                for(i = 0; i < Players.length; i++){
+                    let handname = eval(Players[i] + "_cards");
+                    let result;
+                        //Check for Royal Flush
+                            if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1 && handname[0].suit == handname[1].suit && handname[1].suit == handname[2].suit && handname[2].suit == handname[3].suit && handname[3].suit == handname[4].suit && handname[0].card == 10){
+                                result = ["Royal Flush", 10]
+                            }
+
+                        //Check for Straight Flush
+                            else if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1 && handname[0].suit == handname[1].suit && handname[1].suit == handname[2].suit && handname[2].suit == handname[3].suit && handname[3].suit == handname[4].suit){
+                                result =  ["Straight Flush", 9]
+                            }
+
+                        //Check for Four Of A Kind
+                            else if(handname[0].card == handname[3].card || handname[1].card == handname[4].card){
+                                result = ["Four Of A Kind", 8]
+                            }
+
+                        //Check for Full House
+                            else if((handname[0].card == handname[1].card && handname[2].card == handname[4].card) || (handname[0].card == handname[2].card && handname[3].card == handname[4].card)){
+                                result = ["Full House", 7]
+                            }
+
+                        //Check for Flush
+                            else if(handname[0].card == handname[1].card && handname[2].card == handname[1].card && handname[3].card == handname[2].card && handname[3].card == handname[4].card){
+                                result = ["Flush", 6]
+                            }
+
+                        //Check for Straight
+                            else if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1){
+                                result = ["Straight", 5]
+                            }
+
+                        //Check for Three Of A Kind
+                            else if((handname[0].card == handname[2].card) || (handname[1].card == handname[3].card) || (handname[2].card == handname[4].card)){
+                                result = ["Three Of A Kind", 4]
+                            }
+
+                        //Check for Two Pairs
+                            else if((handname[0].card == handname[1].card && handname[2].card == handname[3].card) || (handname[0].card == handname[1].card && handname[3].card == handname[4].card) || (handname[1].card == handname[2].card && handname[3].card == handname[4].card)){
+                                result = ["Two Pairs", 3]
+                            }
+
+                        //Check for One Pair
+                            else if((handname[0].card == handname[1].card) || (handname[1].card == handname[2].card) || (handname[2].card == handname[3].card) || (handname[3].card == handname[4].card)){
+                                result = ["One Pair", 2]
+                            }
+                    
+                        //Otherwise return the highest card
+                            else{
+                                result = ["High Card ", handname[4].card, 1]
+                            }
+                    
+                        switch(Players[i]){
+                            case "Player":
+                                Playerresult = result;
+                                break;
+                                
+                            case "CPU1":
+                                CPU1result = result;
+                                break;
+                                
+                            case "CPU2":
+                                CPU2result = result;
+                                break;
+                                         }
+                }
+                console.log(Playerresult, CPU1result, CPU2result);
+            }
+            
+            
+            var needresultmessage = true;
+            function displayResult(){
+                let highscore = 0;
+                let winningname = [];
+                let finalwinningname;
+                
+                for(i = 0; i < Players.length; i++){
+                    
+                    let name = eval(Players[i] + "result");
+                    let iffolded = eval(Players[i] + "folded");
+                    
+                    if(name[name.length-1] >= highscore && !iffolded){
+                        if(name[name.length-1] == highscore){
+                            highscore = name[name.length-1];
+                            winningname.push(Players[i]);
+                        }else if(name[name.length-1] > highscore){
+                            highscore = name[name.length-1];
+                            winningname = [Players[i]];
+                        }
+                    }
+                }
+                
+                if(winningname.length > 1){
+                    console.log("finding winner by highest card...");
+                    let h = 0;
+                    for(i = 0; i < winningname.length; i++){
+                        let newnamecard = eval(winningname[i] + "_cards");
+                        let hicard = parseInt(newnamecard[4].card)
+                        if(hicard >= h){
+                            if(hicard > h){
+                                finalwinningname = winningname[i];
+                            }
+                            else if(hicard == h){
+                                finalwinningname = "It is a tie!";
+                                logpara.innerHTML += "<br>It is a tie!";
+                            }
+                        }
+                    }
+                }else{
+                    finalwinningname = winningname[0];
+                }
+                
+                if(finalwinningname == "Player"){
+                    Playerbank += currentpool;
+                    document.getElementById("money").innerHTML = "$" + Playerbank;
+                }
+                
+                if(needresultmessage == true){
+                    switch(finalwinningname){
+                        case "Player":
+                            logpara.innerHTML += "<br>Player has won!";
+                            break;
+                        
+                        case "CPU1":
+                            logpara.innerHTML += "<br>Jack has won!";
+                            break;
+                            
+                        case "CPU2":
+                            logpara.innerHTML += "<br>Jill has won!";
+                            break;
+                    }
+                    needresultmessage = false;
+                }
+                
+                console.log(Player_cards[4].card, CPU1_cards[4].card, CPU2_cards[4].card, winningname.length, winningname, finalwinningname);
+                
+                document.getElementById("reset").style.display = "block";
+                
+            }
+            
+            function reset(){
+                //get rid of chips ready for new ones to be made
+                document.getElementById("playerchips").innerHTML = "";
+                document.getElementById("cpu1bet").innerHTML = "";
+                document.getElementById("cpu2bet").innerHTML = "";
+                
+                //make the deal button available and the current bet div not displayed
+                document.getElementById("currentbet").style.display = "none";
+                document.getElementById("deal").style.display = "block";
+                document.getElementById("buttons").style.display = "block";
+                
+                
+                //revert all deal animations
+                for(i = 0; i <= 4; i++){
+                    document.getElementsByClassName("cardposition")[i].style.position = "absolute";
+                    document.getElementsByClassName("cardposition")[i].style.display = "none";
+                }
+                document.getElementById("card1").style.animation = "";
+                document.getElementById("card2").style.animation = "";
+                document.getElementById("card3").style.animation = "";
+                document.getElementById("card4").style.animation = "";
+                document.getElementById("card5").style.animation = "";
+                
+                let n = document.getElementById("cpucards");
+                let z = document.getElementById("cpucards2");
+                
+                for(i = 0; i <= 4; i ++){
+                    n.getElementsByTagName("img")[i].style.animation = "";
+                    n.getElementsByTagName("img")[i].style.display = "none";
+                    
+                    z.getElementsByTagName("img")[i].style.animation = "";
+                    z.getElementsByTagName("img")[i].style.display = "none";
+                }
+                
+                for(i = 0; i <= 4; i++){
+                     n.getElementsByTagName("img")[i].style.position = "absolute";
+                     z.getElementsByTagName("img")[i].style.position = "absolute";
+                }
+                
+                document.getElementById("Playerhand").innerHTML = '';
+                document.getElementById("buttons").style.display = "block";
+                
+                //reset all variables
+                    Player_cards = [];
+                    CPU1_cards = [];
+                    CPU2_cards = [];
+                    currentpool = 0;
+                    turn = "Player";
+                    round = 1;
+
+                    CPU1chipsbet = 0;
+                    CPU2chipsbet = 0;
+                    Playerchipsbet = 0;
+                    totalchips = 0;
+
+                    Playerfolded = false;
+                    CPU1folded = false;
+                    CPU2folded = false;
+                    CPU1moves = 0;
+                    CPU2moves = 0;
+                    Playermoves = 0;
+                    dealt = false;
+                    
+                    currentbet = 50;
+                
+                    Playerresult = "";
+                    CPU1result = "";
+                    CPU2result = "";
+                    
+                    everyonemoved = false;
+                    
+                    needbetmessage = true;
+                    needresultmessage = true;
+                    needawaitingmessage = true;
+                
+                document.getElementById("rules").innerHTML = "RULES<br>(best to worst)<br><div style='color: black; text-align: left; font-size: 18px; font-family: Ariel;'>1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card</div>";
+                document.getElementById("currentpool").innerHTML = '';
+                document.getElementById("reset").style.display = "none";
+            }
+        </script>
+    </head>
+</html>
