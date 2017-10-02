@@ -671,6 +671,10 @@
             
             function onload(){
                 
+                if(window.innerHeight > window.innerWidth){
+                    document.getElementsByClassName("side").style.height = "375px";
+                }
+                
                 donate();
                 
                 for(i = 1; i < 15; i++){
