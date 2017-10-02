@@ -381,10 +381,9 @@
             
             #currentpool{
                 position: absolute;
-                height: 50px;
-                width: 70px;
-                top: 230px;
-                left: 540px;
+                font-size: 100%;
+                top: 46%;
+                left: 58%;
                 color: lime;
                 font-family: "RomanFont";
             }
@@ -674,6 +673,10 @@
                 if(window.innerHeight > window.innerWidth){
                     document.getElementById("rules").style.height = "375px";
                     document.getElementById("bank").style.height = "375px";
+                    document.getElementById("bank").style.width = "8vw";
+                    document.getElementById("rules").style.width = "8vw";
+                    
+                    document.getElementById("table").style.width = "80%";
                 }
             }
             mobile();
