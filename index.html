@@ -640,7 +640,7 @@
             <div id="currentbet"></div>
             <div id="deal" onclick="deal()">DEAL</div>
         </div>
-        <div id="reset" onclick="reset()">New Game!</div>
+        <div id="reset" onclick="reset()" onload="mobile()">New Game!</div>
     </body>
     <head>
         <script type="text/javascript">
@@ -668,12 +668,13 @@
             var CPU2moves = 0;
             var Playermoves = 0;
             
-            
-            function onload(){
-                
+            function mobile(){
                 if(window.innerHeight > window.innerWidth){
                     document.getElementsByClassName("side").style.height = "375px";
                 }
+            }
+            
+            function onload(){
                 
                 donate();
                 
