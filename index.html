@@ -78,10 +78,15 @@
                 display: flex;
             }
             
+            #bodycontainer{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            
             #bodytab{
                 width: 70%;
                 height: 700px;
-                margin: 0 auto;
                 padding-top: 150px;
             }
             
@@ -99,8 +104,8 @@
                 height: 375px;
                 padding: 5px;
                 box-sizing: border-box;
-                width: 12%;
-                top: 25%;
+                width: 12vw;
+                top: 200px;
                 background-color: rgba(0, 0, 0, 0.4);
                 color: gold;
                 text-align: center;
@@ -533,6 +538,7 @@
                 <div id="notification">Donate please!<div id="notification-after"></div></div>
             </div>
         </div>
+        <div id="bodycontainer">
         <div id="bodytab">
             <div id="table">
                 <!-- EVERYTHING ON THE TABLE !-->
@@ -617,6 +623,7 @@
                 <div id="raise" class="move" onclick="raise('Player')">RAISE</div>
                 <div id="fold" class="move" onclick="fold('Player')">FOLD</div>
             </div>
+        </div>
         </div>
         <div id="rules" class="side">
             RULES<br>(best to worst)<br><div style="color: black; text-align: left; font-size: 18px; font-family: Ariel;">1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card<br>*If the result is equal it will decided by highest card</div>
