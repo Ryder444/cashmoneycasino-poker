@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <meta name="viewport" content="width=1000, initial-scale=1.0">
+        <meta name="viewport" content="width=1200px, initial-scale=1.0">
         <style type="text/css">
             
             /* fonts */
@@ -91,6 +91,7 @@
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-image: url(Images/table.png);
+                position: relative;
             }
             
             .side{
@@ -124,8 +125,8 @@
             
             #cpu1{
                 position: absolute;
-                top: 33%;
-                left: 35.5%;
+                top: 140px;
+                left: 250px;
                 font-size: 20px;
                 color: gold;
                 text-shadow: 2px 0px 0px black;
@@ -133,8 +134,8 @@
             }
             #cpu2{
                 position: absolute;
-                top: 33%;
-                right: 37.5%;
+                top: 140px;
+                right: 280px;
                 font-size: 20px;
                 color: gold;
                 text-shadow: 2px 0px 0px black;
@@ -146,16 +147,16 @@
                 justify-content: center;
                 align-items: center;
                 position: absolute;
-                top: 25%;
+                top: 70px;
                 height: 60px;
                 width: 180px;
                 background-color: rgba(0, 0, 0, 0.4);
             }
             #cpu1hand{
-                left: 31%;
+                left: 200px;
             }
             #cpu2hand{
-                left: 55%;
+                left: 570px;
             }
             
             #player{
@@ -164,14 +165,14 @@
                 font-family: "RomanFont";
                 color: gold;
                 text-shadow: 2px 0px 0px black;
-                top: 56%;
-                left: 41%;
+                top: 300px;
+                left: 350px;
             }
             #playerhand{
                 position: absolute;
                 display: flex;
-                top: 62%;
-                left: 38.5%;
+                top: 350px;
+                left: 320px;
                 height: 90px;
                 width: 295px;
                 background-color: rgba(0, 0, 0, 0.4);
@@ -183,7 +184,7 @@
             
             .move{
                 position: absolute;
-                top: 83%;
+                top: 700px;
                 height: 85px;
                 width: 250px;
                 background-color: rgba(0, 0, 0, 0.4);
@@ -225,8 +226,8 @@
             
             #deck{
                 position: absolute;
-                top: 42.5%;
-                left: 25%;
+                top: 210px;
+                left: 150px;
                 width: 70px;
                 height: auto;
                 z-index: 9991;
@@ -235,8 +236,8 @@
             .cardposition{
                 transform-style: preserve-3d;
                 position: absolute;
-                top: 43%;
-                left: 25%;
+                top: 0px;
+                left: 0px;
                 padding: 5px;
                 height: 80px;
                 width: 55px;
@@ -260,28 +261,28 @@
             }
             
             #card1{
-                 top: 62%;
-                 left: 38.5%;
+                 top: 350px;
+                 left: 320px;
                  transform: scale(1);
             }
             #card2{
-                 left: 42.75%;
-                 top: 62%;
+                 left: 377px;
+                 top: 350px;
                  transform: scale(1);
             }
             #card3{
-                 left: 47%;
-                 top: 62%;
+                 left: 435px;
+                 top: 350px;
                  transform: scale(1);
             }
             #card4{
-                 left: 51.25%;
-                 top: 62%;
+                 left: 492px;
+                 top: 350px;
                  transform: scale(1);
             }
             #card5{
-                 left: 55.5%;
-                 top: 62%;
+                 left: 550px;
+                 top: 350px;
                  transform: scale(1);
             }
             
@@ -344,8 +345,8 @@
             
             .pbet{
                 position: absolute;
-                top: 65%;
-                left: 65%;
+                top: 360px;
+                left: 640px;
                 z-index: 9997;
                 height: 50px;
                 width: 50px;
@@ -355,22 +356,22 @@
             
             #cpu1bet{
                 position: absolute;
-                top: 30%;
-                left: 25%;
+                top: 90px;
+                left: 140px;
             }
             
             #cpu2bet{
                 position: absolute;
-                top: 30%;
-                left: 70.5%;
+                top: 90px;
+                left: 770px;
             }
             
             #currentpool{
                 position: absolute;
                 height: 50px;
                 width: 70px;
-                top: 45vh;
-                left: 54vw;
+                top: 230px;
+                left: 540px;
                 color: lime;
                 font-family: "RomanFont";
             }
@@ -380,8 +381,8 @@
                 color: red;
                 font-family: "RomanFont";
                 position: absolute;
-                top: 83.5%;
-                left: 41%;
+                top: 700px;
+                left: 500px;
                 padding: 20px;
                 display: none;
             }
@@ -463,28 +464,28 @@
             
             
             @keyframes dealcard1{
-                0%{left: 25%; top: 43%; transform: scale(0.7)}
-                90%{left: 38.5%; top: 62%; transform: scale(1)}
+                0%{left: 150px; top: 210px; transform: scale(0.7)}
+                90%{left: 320px; top: 350px; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard2{
-                0%{left: 25%; top: 43%; transform: scale(0.7)}
-                92%{left: 42.75%; top: 62%; transform: scale(1)}
+                0%{left: 150px; top: 210px; transform: scale(0.7)}
+                92%{left: 377px; top: 350px; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard3{
-                0%{left: 25%; top: 43%; transform: scale(0.7)}
-                94%{left: 47%; top: 62%; transform: scale(1)}
+                0%{left: 150px; top: 210px; transform: scale(0.7)}
+                94%{left: 435px; top: 350px; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard4{
-                0%{left: 25%; top: 43%; transform: scale(0.7)}
-                96%{left: 51.25%; top: 62%; transform: scale(1)}
+                0%{left: 150px; top: 210px; transform: scale(0.7)}
+                96%{left: 492px; top: 350px; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard5{
-                0%{left: 25%; top: 43%; transform: scale(0.7)}
-                98%{left: 55.5%; top: 62%; transform: scale(1)}
+                0%{left: 150px; top: 210px; transform: scale(0.7)}
+                98%{left: 550px; top: 350px; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             
@@ -498,18 +499,18 @@
             }
             
             @keyframes bet{
-                from{transform: translateY(0%) translateX(0%)}
-                to{transform: translateY(-320%) translateX(-500%)}
+                from{transform: translateY(0px) translateX(0px)}
+                to{transform: translateY(-150px) translateX(-160px)}
             }
             
             @keyframes bet1{
-                from{top: 0%; left: 0%; transform: scale(1)}
-                to{top: 15vh; left: 25vw; transform: scale(3.4)}
+                from{transform: translateY(0px) translateX(0px) scale(1)}
+                to{transform: translateY(120px) translateX(320px) scale(3.4)}
             }
-            @keyframes bet2{
-                from{top: 0%; left: 0%; transform: scale(1)}
-                to{top: 15vh; left: -25vw; transform: scale(3.4)}
-            }
+            //@keyframes bet2{
+            //    from{transform: translateY(0px) translateX(0px) scale(1)}
+            //    to{transform: translateY(140px) translateX(-340px) scale(3.4)}
+            //}
             
             @keyframes notification{
                 0%{transform: scale(0)}
