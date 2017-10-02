@@ -356,9 +356,9 @@
             
             .pbet{
                 position: absolute;
-                top: 360px;
-                left: 640px;
-                z-index: 9997;
+                top: 73%;
+                left: 68%;
+                z-index: 8886;
                 height: 50px;
                 width: 50px;
                 background-image: url(Images/chips.png);
@@ -367,14 +367,16 @@
             
             #cpu1bet{
                 position: absolute;
-                top: 90px;
-                left: 140px;
+                top: 15%;
+                left: 17%;
+                z-index: 8887;
             }
             
             #cpu2bet{
                 position: absolute;
-                top: 90px;
-                left: 770px;
+                top: 15%;
+                left: 80%;
+                z-index: 8885;
             }
             
             #currentpool{
@@ -475,53 +477,53 @@
             
             
             @keyframes dealcard1{
-                0%{left: 150px; top: 210px; transform: scale(0.7)}
-                90%{left: 320px; top: 350px; transform: scale(1)}
+                0%{left: 16%; top: 38%; transform: scale(0.7)}
+                90%{left: 33.5%; top: 70%; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard2{
-                0%{left: 150px; top: 210px; transform: scale(0.7)}
-                92%{left: 377px; top: 350px; transform: scale(1)}
+                0%{left: 16%; top: 38%; transform: scale(0.7)}
+                92%{left: 39.5%; top: 70%; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard3{
-                0%{left: 150px; top: 210px; transform: scale(0.7)}
-                94%{left: 435px; top: 350px; transform: scale(1)}
+                0%{left: 16%; top: 38%; transform: scale(0.7)}
+                94%{left: 45.5%; top: 70%; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard4{
-                0%{left: 150px; top: 210px; transform: scale(0.7)}
-                96%{left: 492px; top: 350px; transform: scale(1)}
+                0%{left: 16%; top: 38%; transform: scale(0.7)}
+                96%{left: 51.5%; top: 70%; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             @keyframes dealcard5{
-                0%{left: 150px; top: 210px; transform: scale(0.7)}
-                98%{left: 550px; top: 350px; transform: scale(1)}
+                0%{left: 16%; top: 38%; transform: scale(0.7)}
+                98%{left: 57.5%; top: 70%; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
             
             @keyframes movecpu1{
-                from{transform: translateX(-400%) translateY(280%);}
+                from{transform: translateX(-340%) translateY(270%);}
                 to{transform: translateX(0%) translateY(-50%);}
             }
             @keyframes movecpu2{
-                from{transform: translateX(-1350%) translateY(280%);}
+                from{transform: translateX(-1250%) translateY(270%);}
                 to{transform: translateX(0%) translateY(-50%);}
             }
             
             @keyframes bet{
-                from{transform: translateY(0px) translateX(0px)}
-                to{transform: translateY(-150px) translateX(-160px)}
+                from{transform: translateY(0) translateX(0)}
+                to{transform: translateY(-300%) translateX(-330%)}
             }
             
             @keyframes bet1{
-                from{transform: translateY(0px) translateX(0px) scale(1)}
-                to{transform: translateY(120px) translateX(320px) scale(3.4)}
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(1050%) translateX(1800%) scale(3.4)}
             }
-            //@keyframes bet2{
-            //    from{transform: translateY(0px) translateX(0px) scale(1)}
-            //    to{transform: translateY(140px) translateX(-340px) scale(3.4)}
-            //}
+            @keyframes bet2{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(930%) translateX(-1975%) scale(3.4)}
+            }
             
             @keyframes notification{
                 0%{transform: scale(0)}
@@ -901,7 +903,6 @@
                                 let chipname = "chip" + (i);
                                 let sec = Math.random()*2;
                                 document.getElementById(chipname).style.animation = "bet "+sec+"s forwards";
-                                //setTimeout(function(){document.getElementById(chipname).style.position = "relative";}, sec + 50);
                                 Playerchipsbet += 1;
                                 totalchips += 1;
                             }
