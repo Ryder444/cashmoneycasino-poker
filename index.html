@@ -618,7 +618,7 @@
             </div>
         </div>
         <div id="rules" class="side">
-            RULES<br>(best to worst)<br><div style="color: black; text-align: left; font-size: 18px; font-family: Ariel;">1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card</div>
+            RULES<br>(best to worst)<br><div style="color: black; text-align: left; font-size: 18px; font-family: Ariel;">1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card<br>*If the result is equal it will decided by highest card</div>
         </div>
         <div id="bank" class="side">
             BANK <br><div id="money">$500</div>
@@ -1163,7 +1163,7 @@
                     
                         //Otherwise return the highest card
                             else{
-                                result = ["High Card ", handname[4].card, 1]
+                                result = ["High Card", handname[4].card, 1]
                             }
                     
                         switch(Players[i]){
@@ -1185,6 +1185,7 @@
             
             
             var needresultmessage = true;
+            var needhighestcardmessage = false;
             function displayResult(){
                 let highscore = 0;
                 let winningname = [];
@@ -1208,15 +1209,19 @@
                 
                 if(winningname.length > 1){
                     console.log("finding winner by highest card...");
-                    let h = 0;
+                    logpara.innerHTML += "<br>finding winner by highest card...";
+                    needhighestcardmessage = true;
+                    var highestsofar = 0;
                     for(i = 0; i < winningname.length; i++){
                         let newnamecard = eval(winningname[i] + "_cards");
                         let hicard = parseInt(newnamecard[4].card)
-                        if(hicard >= h){
-                            if(hicard > h){
+                        console.log(hicard);
+                        if(hicard >= highestsofar){
+                            if(hicard > highestsofar){
                                 finalwinningname = winningname[i];
+                                highestsofar = hicard;
                             }
-                            else if(hicard == h){
+                            else if(hicard == highestsofar){
                                 finalwinningname = "It is a tie!";
                                 logpara.innerHTML += "<br>It is a tie!";
                             }
@@ -1231,18 +1236,44 @@
                     document.getElementById("money").innerHTML = "$" + Playerbank;
                 }
                 
+                if(finalwinningname == "It is a tie!" && Playerfolded == false){
+                    Playerbank += currentbet + (currentbet*0.5);
+                    document.getElementById("money").innerHTML = "$" + Playerbank;
+                }
+                
                 if(needresultmessage == true){
                     switch(finalwinningname){
                         case "Player":
                             logpara.innerHTML += "<br>Player has won!";
+                            if(Playerresult[0] == "High Card"){
+                                logpara.innerHTML += "<br>With a " + Playerresult[0] + " of " + Player_cards[4].card;
+                            }else if(Playerresult[0] == "Two Pairs" || Playerresult[0] == "One Pair"){
+                                logpara.innerHTML += "<br>With " + Playerresult[0];
+                            }else{
+                                logpara.innerHTML += "<br>With a" + Playerresult[0];
+                            }
                             break;
                         
                         case "CPU1":
                             logpara.innerHTML += "<br>Jack has won!";
+                            if(CPU1result[0] == "High Card"){
+                                logpara.innerHTML += "<br>With a " + CPU1result[0] + " of " + CPU1result[4].card;
+                            }else if(CPU1result[0] == "Two Pairs" || CPU1result[0] == "One Pair"){
+                                logpara.innerHTML += "<br>With " + CPU1result[0];
+                            }else{
+                                logpara.innerHTML += "<br>With a" + CPU1result[0];
+                            }
                             break;
                             
                         case "CPU2":
                             logpara.innerHTML += "<br>Jill has won!";
+                            if(CPU2result[0] == "High Card"){
+                                logpara.innerHTML += "<br>With a " + CPU2result[0] + " of " + CPU2result[4].card;
+                            }else if(CPU2result[0] == "Two Pairs" || CPU2result[0] == "One Pair"){
+                                logpara.innerHTML += "<br>With " + CPU2result[0];
+                            }else{
+                                logpara.innerHTML += "<br>With a" + CPU2result[0];
+                            }
                             break;
                     }
                     needresultmessage = false;
@@ -1328,8 +1359,9 @@
                     needbetmessage = true;
                     needresultmessage = true;
                     needawaitingmessage = true;
+                    needhighestcardmessage = false;
                 
-                document.getElementById("rules").innerHTML = "RULES<br>(best to worst)<br><div style='color: black; text-align: left; font-size: 18px; font-family: Ariel;'>1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card</div>";
+                document.getElementById("rules").innerHTML = "RULES<br>(best to worst)<br><div style='color: black; text-align: left; font-size: 18px; font-family: Ariel;'>1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card<br>*If the result is equal it will decided by highest card</div>";
                 document.getElementById("currentpool").innerHTML = '';
                 document.getElementById("reset").style.display = "none";
             }
