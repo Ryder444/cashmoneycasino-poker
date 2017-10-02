@@ -571,47 +571,47 @@
                 <div id="player">YOUR HAND:</div>
                     <div id="Playerhand">
                 
-                <!-- Player cards !-->
-                <div id="card1" class="cardposition">
-                    <div class="front">
-                        <img src="Images/Cards/Clubs1.png" id="card1face">
+                    <!-- Player cards !-->
+                    <div id="card1" class="cardposition">
+                        <div class="front">
+                            <img src="Images/Cards/Clubs1.png" id="card1face">
+                        </div>
+                        <div class="back">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
                     </div>
-                    <div class="back">
-                        <img src="Images/Cards/card_back.png">
+                    <div id="card2" class="cardposition">
+                        <div class="front">
+                            <img src="Images/Cards/Clubs1.png" id="card2face">
+                        </div>
+                        <div class="back">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
                     </div>
-                </div>
-                <div id="card2" class="cardposition">
-                    <div class="front">
-                        <img src="Images/Cards/Clubs1.png" id="card2face">
+                    <div id="card3" class="cardposition">
+                        <div class="front">
+                            <img src="Images/Cards/Clubs1.png" id="card3face">
+                        </div>
+                        <div class="back">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
                     </div>
-                    <div class="back">
-                        <img src="Images/Cards/card_back.png">
+                    <div id="card4" class="cardposition">
+                        <div class="front">
+                            <img src="Images/Cards/Clubs1.png" id="card4face">
+                        </div>
+                        <div class="back">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
                     </div>
-                </div>
-                <div id="card3" class="cardposition">
-                    <div class="front">
-                        <img src="Images/Cards/Clubs1.png" id="card3face">
+                    <div id="card5" class="cardposition">
+                        <div class="front">
+                            <img src="Images/Cards/Clubs1.png" id="card5face">
+                        </div>
+                        <div class="back">
+                            <img src="Images/Cards/card_back.png">
+                        </div>
                     </div>
-                    <div class="back">
-                        <img src="Images/Cards/card_back.png">
-                    </div>
-                </div>
-                <div id="card4" class="cardposition">
-                    <div class="front">
-                        <img src="Images/Cards/Clubs1.png" id="card4face">
-                    </div>
-                    <div class="back">
-                        <img src="Images/Cards/card_back.png">
-                    </div>
-                </div>
-                <div id="card5" class="cardposition">
-                    <div class="front">
-                        <img src="Images/Cards/Clubs1.png" id="card5face">
-                    </div>
-                    <div class="back">
-                        <img src="Images/Cards/card_back.png">
-                    </div>
-                </div>
                 </div>
                 
                 <!-- BETS !-->
@@ -665,6 +665,8 @@
             var CPU2moves = 0;
             var Playermoves = 0;
             
+            var playerhandinnerhtml;
+            
             function mobile(){
                 if(window.innerHeight > window.innerWidth){
                     document.getElementById("rules").style.height = "375px";
@@ -693,6 +695,8 @@
             
             function deal(){
                 if(dealt == false){
+                    
+                    playerhandinnerhtml = document.getElementById("Playerhand").innerHTML;
                     
                     CPU1bank = Math.ceil((Math.ceil(Math.random()*(Playerbank*2) + 200))/50) * 50;
                     CPU2bank = Math.ceil((Math.ceil(Math.random()*(Playerbank*2) + 200))/50) * 50;
@@ -978,13 +982,6 @@
                         document.getElementById("buttons").style.display = "none";
                         logpara.innerHTML += "<br>Player Folds";
                         document.getElementById("Playerhand").innerHTML = 'FOLDED!';
-                        
-                        document.getElementById("card1").style.display = "none";
-                        document.getElementById("card2").style.display = "none";
-                        document.getElementById("card3").style.display = "none";
-                        document.getElementById("card4").style.display = "none";
-                        document.getElementById("card5").style.display = "none";
-                        
                         
                         Playerfolded = true;
                         nextTurn(1);
@@ -1318,15 +1315,18 @@
                 
                 
                 //revert all deal animations
-                for(i = 0; i <= 4; i++){
-                    document.getElementsByClassName("cardposition")[i].style.position = "absolute";
-                    document.getElementsByClassName("cardposition")[i].style.display = "none";
+                
+                if(Playerfolded == false){
+                    for(i = 0; i <= 4; i++){
+                        document.getElementsByClassName("cardposition")[i].style.position = "absolute";
+                        document.getElementsByClassName("cardposition")[i].style.display = "none";
+                    }
+                    document.getElementById("card1").style.animation = "";
+                    document.getElementById("card2").style.animation = "";
+                    document.getElementById("card3").style.animation = "";
+                    document.getElementById("card4").style.animation = "";
+                    document.getElementById("card5").style.animation = "";
                 }
-                document.getElementById("card1").style.animation = "";
-                document.getElementById("card2").style.animation = "";
-                document.getElementById("card3").style.animation = "";
-                document.getElementById("card4").style.animation = "";
-                document.getElementById("card5").style.animation = "";
                 
                 let n = document.getElementById("cpucards");
                 let z = document.getElementById("cpucards2");
@@ -1384,6 +1384,7 @@
                 document.getElementById("rules").innerHTML = "RULES<br>(best to worst)<br><div style='color: black; text-align: left; font-size: 18px; font-family: Ariel;'>1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card<br>*If the result is equal it will decided by highest card</div>";
                 document.getElementById("currentpool").innerHTML = '';
                 document.getElementById("reset").style.display = "none";
+                document.getElementById("Playerhand").innerHTML = playerhandinnerhtml;
             }
         </script>
     </head>
