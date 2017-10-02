@@ -632,7 +632,7 @@
             </div>
         </div>
         </div>
-        <div id="rules" class="side">
+        <div id="rules" class="side" >
             RULES<br>(best to worst)<br><div style="color: black; text-align: left; font-size: 18px; font-family: Ariel;">1. Royal Flush<br>2. Straight Flush<br>3. Four of a Kind<br>4. Full House<br>5. Flush<br>6. Straight<br>7. Three of a Kind<br>8. Two Pairs<br>9. One Pair<br>10. High card<br>*If the result is equal it will decided by highest card</div>
         </div>
         <div id="bank" class="side">
@@ -640,7 +640,7 @@
             <div id="currentbet"></div>
             <div id="deal" onclick="deal()">DEAL</div>
         </div>
-        <div id="reset" onclick="reset()" onload="mobile()">New Game!</div>
+        <div id="reset" onclick="reset()">New Game!</div>
     </body>
     <head>
         <script type="text/javascript">
@@ -670,9 +670,11 @@
             
             function mobile(){
                 if(window.innerHeight > window.innerWidth){
-                    document.getElementsByClassName("side").style.height = "375px";
+                    document.getElementById("rules").style.height = "375px";
+                    document.getElementById("bank").style.height = "375px";
                 }
             }
+            mobile();
             
             function onload(){
                 
