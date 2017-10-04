@@ -987,6 +987,9 @@
                     document.getElementById("bank").style.height = "375px";
                     document.getElementById("bank").style.width = "8vw";
                     document.getElementById("rules").style.width = "8vw";
+                    canvas.height = 600;
+                }else{
+                    canvas.height = window.innerHeight;
                 }
             }
             mobile();
@@ -1714,6 +1717,9 @@
                 document.getElementById("canvas").style.position = "absolute";
                 document.getElementById("canvas").style.top = "0%";
                 document.getElementById("canvas").style.left = "0%";
+                
+                let w1 = window.innerWidth*0.95;
+                canvas.width = w1;
                 canvasSetup();
 
                 var fireworks = [];
