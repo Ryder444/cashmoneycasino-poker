@@ -4,6 +4,9 @@
         <meta name="viewport" content="width=1200px, initial-scale=1.0">
         <style type="text/css">
             
+            //flex (js), transforms (in js and keyframes), animations (js and keyframes)
+            //-webkit-, -ms-, -moz-
+            
             /* fonts */
             @font-face {
                 font-family: "RomanFont Bold";
@@ -76,12 +79,21 @@
                 text-shadow: 1px 0px 0px black;
                 z-index: 9999;
                 display: flex;
+                -webkit-display: flex;
+                -ms-display: flex;
+                -moz-display: flex;
             }
             
             #bodycontainer{
                 width: 100%;
                 display: flex;
+                -webkit-display: flex;
+                -ms-display: flex;
+                -moz-display: flex;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                -moz-justify-content: center;
             }
             
             #bodytab{
@@ -149,8 +161,17 @@
             
             .hand{
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
                 align-items: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
                 position: absolute;
                 top: 12%;
                 height: 12%;
@@ -176,6 +197,9 @@
             #playerhand{
                 position: absolute;
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 top: 70%;
                 left: 33.5%;
                 height: 18%;
@@ -183,14 +207,26 @@
                 background-color: rgba(0, 0, 0, 0.4);
                 color: white;
                 align-items: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
                 font-size: 100%;
             }
             #buttons{
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 padding-top: 50px;
                 padding-top: 50px;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
                 
             }
             
@@ -201,8 +237,17 @@
                 width: 250px;
                 background-color: rgba(0, 0, 0, 0.4);
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 align-items: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                -ms-justify-content: center;
                 padding: 0 auto;
                 box-sizing: border-box;
                 color: gold;
@@ -247,6 +292,9 @@
             
             .cardposition{
                 transform-style: preserve-3d;
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
                 position: absolute;
                 top: 0px;
                 left: 0px;
@@ -261,11 +309,20 @@
                 height: 100%;
                 width: auto;
                 transform-style: preserve-3d;
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                -ms-transform-style: preserve-3d;
                 backface-visibility: hidden;
+                -webkit-backface-visibility: hidden;
+                -moz-backface-visibility: hidden;
+                -ms-backface-visibility: hidden;
             }
             
             .front img{
                 transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+                -ms-transform: rotateY(180deg);
             }
             
             .front, .back{
@@ -274,22 +331,37 @@
             
             #card1{
                  transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
                 position: relative;
             }
             #card2{
                  transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
                 position: relative;
             }
             #card3{;
                  transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
                 position: relative;
             }
             #card4{
                  transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
                 position: relative;
             }
             #card5{
                  transform: scale(1);
+                -webkit-transform: scale(1);
+                -moz-transform: scale(1);
+                -ms-transform: scale(1);
                 position: relative;
             }
             
@@ -305,7 +377,13 @@
             #cpucards, #cpucards2{
                 width: auto;
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                -moz-justify-content: center;
             }
             
             #cpucards2 img{
@@ -320,8 +398,17 @@
                 margin-top: 50%;
                 position: absolute;
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                -moz-justify-content: center;
                 align-items: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
                 height: 70px;
                 display: none;
                 width: 90%;
@@ -330,8 +417,17 @@
             
             #deal{
                 display: flex;
+                -webkit-display: flex;
+                -moz-display: flex;
+                -ms-display: flex;
                 justify-content: center;
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                -moz-justify-content: center;
                 align-items: center;
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                -ms-align-items: center;
                 height: 70px;
                 border: 1px solid black;
             }
@@ -414,6 +510,9 @@
             
             .fa:hover{
                 transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
             }
             
             #fbicon{
@@ -438,10 +537,16 @@
             #notification{
               background: #3b7bbf;
               display: flex;
+              -webkit-display: flex;
+              -moz-display: flex;
+              -ms-display: flex;
               border-radius: 4px;
               padding-left: 28px;
               position: absolute;
               align-items: center;
+              -webkit-align-items: center;
+              -moz-align-items: center;
+              -ms-align-items: center;
               left: -168.5px;
               top: 90px;
               font-size: 17px;
@@ -469,28 +574,139 @@
                 transform-origin: -95px 75px;
             }
             
+            #startingbetdiv{
+                width: 90%;
+                margin: 0 auto;
+                padding: 3px;
+                display: flex;
+                -webkit-display: flex;
+                -ms-display: flex;
+                -moz-display: flex;
+                justify-content: space-between;
+                -webkit-justify-content: space-between;
+                -moz-justify-content: space-between;
+                -ms-justify-content: space-between;
+                align-items: center;
+                -webkit-align-items: center;
+                -ms-align-items: center;
+                -moz-align-items: center;
+                font-family: "RomanFont";
+                font-size: 70%;
+            }
+            
+            #startingbet{
+                width: 35%;
+            }
+            
             
             @keyframes dealcard1{
                 0%{left: -50%; top: -150%; transform: scale(0.7)}
                 90%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
+            @-webkit-keyframes dealcard1{
+                0%{left: -50%; top: -150%; transform: scale(0.7)}
+                90%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-ms-keyframes dealcard1{
+                0%{left: -50%; top: -150%; transform: scale(0.7)}
+                90%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-moz-keyframes dealcard1{
+                0%{left: -50%; top: -150%; transform: scale(0.7)}
+                90%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            
+            
+            
             @keyframes dealcard2{
                 0%{left: -70%; top: -150%; transform: scale(0.7)}
                 92%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
+            @-webkit-keyframes dealcard2{
+                0%{left: -70%; top: -150%; transform: scale(0.7)}
+                92%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-moz-keyframes dealcard2{
+                0%{left: -70%; top: -150%; transform: scale(0.7)}
+                92%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-ms-keyframes dealcard2{
+                0%{left: -70%; top: -150%; transform: scale(0.7)}
+                92%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            
+            
+            
             @keyframes dealcard3{
                 0%{left: -90%; top: -150%; transform: scale(0.7)}
                 94%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
+            @-webkit-keyframes dealcard3{
+                0%{left: -90%; top: -150%; transform: scale(0.7)}
+                94%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-moz-keyframes dealcard3{
+                0%{left: -90%; top: -150%; transform: scale(0.7)}
+                94%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-ms-keyframes dealcard3{
+                0%{left: -90%; top: -150%; transform: scale(0.7)}
+                94%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            
+            
+            
             @keyframes dealcard4{
                 0%{left: -110%; top: -150%; transform: scale(0.7)}
                 96%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
+            @-webkit-keyframes dealcard4{
+                0%{left: -110%; top: -150%; transform: scale(0.7)}
+                96%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-ms-keyframes dealcard4{
+                0%{left: -110%; top: -150%; transform: scale(0.7)}
+                96%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-moz-keyframes dealcard4{
+                0%{left: -110%; top: -150%; transform: scale(0.7)}
+                96%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+
+            
+            
             @keyframes dealcard5{
+                0%{left: -130%; top: -150%; transform: scale(0.7)}
+                98%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-webkit-keyframes dealcard5{
+                0%{left: -130%; top: -150%; transform: scale(0.7)}
+                98%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-moz-keyframes dealcard5{
+                0%{left: -130%; top: -150%; transform: scale(0.7)}
+                98%{left: 0; top: 0; transform: scale(1)}
+                100%{transform: rotateY(180deg)}
+            }
+            @-ms-keyframes dealcard5{
                 0%{left: -130%; top: -150%; transform: scale(0.7)}
                 98%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
@@ -500,26 +716,117 @@
                 from{transform: translateX(-340%) translateY(270%);}
                 to{transform: translateX(0%) translateY(-50%);}
             }
+            @-webkit-keyframes movecpu1{
+                from{transform: translateX(-340%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            @-moz-keyframes movecpu1{
+                from{transform: translateX(-340%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            @-ms-keyframes movecpu1{
+                from{transform: translateX(-340%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            
+            
+            
+            
             @keyframes movecpu2{
                 from{transform: translateX(-1250%) translateY(270%);}
                 to{transform: translateX(0%) translateY(-50%);}
             }
+            @-webkit-keyframes movecpu2{
+                from{transform: translateX(-1250%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            @-moz-keyframes movecpu2{
+                from{transform: translateX(-1250%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            @-ms-keyframes movecpu2{
+                from{transform: translateX(-1250%) translateY(270%);}
+                to{transform: translateX(0%) translateY(-50%);}
+            }
+            
+            
+            
             
             @keyframes bet{
                 from{transform: translateY(0) translateX(0)}
                 to{transform: translateY(-300%) translateX(-330%)}
             }
+            @-webkit-keyframes bet{
+                from{transform: translateY(0) translateX(0)}
+                to{transform: translateY(-300%) translateX(-330%)}
+            }
+            @-moz-keyframes bet{
+                from{transform: translateY(0) translateX(0)}
+                to{transform: translateY(-300%) translateX(-330%)}
+            }
+            @-ms-keyframes bet{
+                from{transform: translateY(0) translateX(0)}
+                to{transform: translateY(-300%) translateX(-330%)}
+            }
+            
+            
+            
             
             @keyframes bet1{
                 from{transform: translateY(0%) translateX(0%) scale(1)}
                 to{transform: translateY(1050%) translateX(1800%) scale(3.4)}
             }
+            @-webkit-keyframes bet1{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(1050%) translateX(1800%) scale(3.4)}
+            }
+            @-moz-keyframes bet1{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(1050%) translateX(1800%) scale(3.4)}
+            }
+            @-ms-keyframes bet1{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(1050%) translateX(1800%) scale(3.4)}
+            }
+            
+            
+            
             @keyframes bet2{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(930%) translateX(-1975%) scale(3.4)}
+            }
+            @-webkit-keyframes bet2{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(930%) translateX(-1975%) scale(3.4)}
+            }
+            @-ms-keyframes bet2{
+                from{transform: translateY(0%) translateX(0%) scale(1)}
+                to{transform: translateY(930%) translateX(-1975%) scale(3.4)}
+            }
+            @-moz-keyframes bet2{
                 from{transform: translateY(0%) translateX(0%) scale(1)}
                 to{transform: translateY(930%) translateX(-1975%) scale(3.4)}
             }
             
             @keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-webkit-keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-moz-keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-ms-keyframes notification{
                 0%{transform: scale(0)}
                 9%{transform: scale(1.2)}
                 11%{transform: scale(1)}
@@ -636,6 +943,7 @@
             BANK <br><div id="money">$500</div>
             <div id="currentbet"></div>
             <div id="deal" onclick="deal()">DEAL</div>
+            <div id="startingbetdiv">Starting bet: <input type="number" value="50" step="50" id="startingbet"></div>
         </div>
         <div id="reset" onclick="reset()">New Game!</div>
     </body>
@@ -667,6 +975,9 @@
             
             var playerhandinnerhtml;
             
+            var currentbet;
+            var startingbet;
+            
             function mobile(){
                 if(window.innerHeight > window.innerWidth){
                     document.getElementById("rules").style.height = "375px";
@@ -695,6 +1006,11 @@
             
             function deal(){
                 if(dealt == false){
+                    
+                    startingbet = parseInt(document.getElementById("startingbet").value);
+                    currentbet = parseInt(startingbet);
+                    
+                    document.getElementById("startingbetdiv").style.display = "none";
                     
                     playerhandinnerhtml = document.getElementById("Playerhand").innerHTML;
                     
@@ -850,7 +1166,6 @@
                 document.getElementById("card5").style.animation = "dealcard5 2s forwards";
             }
             
-            var currentbet = 50;
             var needbetmessage = true;
             
             function bet(name){
@@ -873,6 +1188,7 @@
                                    }
                         
                         logpara.innerHTML += "<br>"+n+" bets $" + currentbet;
+                        needbetmessage = false;
                     }else{
                         needbetmessage = true;
                     }; 
@@ -954,7 +1270,7 @@
             
             function raise(name){
                 if(dealt == true && name == turn){
-                currentbet += 50;
+                currentbet += startingbet;
                 needbetmessage = false;
                 bet(name);
                 
@@ -1254,7 +1570,7 @@
                 }
                 
                 if(finalwinningname == "It is a tie!" && Playerfolded == false){
-                    Playerbank += currentbet + (currentbet*0.5);
+                    Playerbank += startingbet*2;
                     document.getElementById("money").innerHTML = "$" + Playerbank;
                 }
                 
@@ -1274,7 +1590,7 @@
                         case "CPU1":
                             logpara.innerHTML += "<br>Jack has won!";
                             if(CPU1result[0] == "High Card"){
-                                logpara.innerHTML += "<br>With a " + CPU1result[0] + " of " + CPU1result[4].card;
+                                logpara.innerHTML += "<br>With a " + CPU1result[0] + " of " + CPU1_cards[4].card;
                             }else if(CPU1result[0] == "Two Pairs" || CPU1result[0] == "One Pair"){
                                 logpara.innerHTML += "<br>With " + CPU1result[0];
                             }else{
@@ -1285,7 +1601,7 @@
                         case "CPU2":
                             logpara.innerHTML += "<br>Jill has won!";
                             if(CPU2result[0] == "High Card"){
-                                logpara.innerHTML += "<br>With a " + CPU2result[0] + " of " + CPU2result[4].card;
+                                logpara.innerHTML += "<br>With a " + CPU2result[0] + " of " + CPU2_cards[4].card;
                             }else if(CPU2result[0] == "Two Pairs" || CPU2result[0] == "One Pair"){
                                 logpara.innerHTML += "<br>With " + CPU2result[0];
                             }else{
@@ -1296,7 +1612,7 @@
                     needresultmessage = false;
                 }
                 
-                console.log(Player_cards[4].card, CPU1_cards[4].card, CPU2_cards[4].card, winningname.length, winningname, finalwinningname);
+                console.log(winningname, finalwinningname);
                 
                 document.getElementById("reset").style.display = "block";
                 
@@ -1368,7 +1684,6 @@
                     Playermoves = 0;
                     dealt = false;
                     
-                    currentbet = 50;
                 
                     Playerresult = "";
                     CPU1result = "";
@@ -1385,6 +1700,7 @@
                 document.getElementById("currentpool").innerHTML = '';
                 document.getElementById("reset").style.display = "none";
                 document.getElementById("Playerhand").innerHTML = playerhandinnerhtml;
+                document.getElementById("startingbetdiv").style.display = "flex";
             }
         </script>
     </head>
