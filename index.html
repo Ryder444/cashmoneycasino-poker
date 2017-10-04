@@ -1,6 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="fireworks.js"></script>
         <meta name="viewport" content="width=1200px, initial-scale=1.0">
         <style type="text/css">
             
@@ -834,6 +835,7 @@
             }
             
         </style>
+        <script type="text/javascript" src="fireworks.js"></script>
     </head>
     <body onload="onload()">
         <div id="header">
@@ -946,6 +948,7 @@
             <div id="startingbetdiv">Starting bet: <input type="number" value="50" step="50" id="startingbet"></div>
         </div>
         <div id="reset" onclick="reset()">New Game!</div>
+        <canvas style="display: none" id="canvas"></canvas>
     </body>
     <head>
         <script type="text/javascript">
@@ -1578,6 +1581,7 @@
                     switch(finalwinningname){
                         case "Player":
                             logpara.innerHTML += "<br>Player has won!";
+                            fireworks();
                             if(Playerresult[0] == "High Card"){
                                 logpara.innerHTML += "<br>With a " + Playerresult[0] + " of " + Player_cards[4].card;
                             }else if(Playerresult[0] == "Two Pairs" || Playerresult[0] == "One Pair"){
@@ -1701,6 +1705,38 @@
                 document.getElementById("reset").style.display = "none";
                 document.getElementById("Playerhand").innerHTML = playerhandinnerhtml;
                 document.getElementById("startingbetdiv").style.display = "flex";
+            }
+            
+            //fireworks
+            function fireworks(){
+                
+                document.getElementById("canvas").style.display = "block";
+                document.getElementById("canvas").style.position = "absolute";
+                document.getElementById("canvas").style.top = "0%";
+                document.getElementById("canvas").style.left = "0%";
+                canvasSetup();
+
+                var fireworks = [];
+                fireworks.push(new Firework);
+                fireworks.push(new Firework);
+                fireworks.push(new Firework);
+
+                var counter = 0;
+
+                var interval = setInterval(function(){  
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    fireworks[0].update();
+                    fireworks[0].show();
+                    fireworks[1].update();
+                    fireworks[1].show(); 
+                    fireworks[2].update();
+                    fireworks[2].show(); 
+                }, 15);
+                
+                setTimeout(function(){
+                    document.getElementById("canvas").style.display = "none";
+                    clearInterval(interval);
+                }, 3200);
             }
         </script>
     </head>
