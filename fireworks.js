@@ -3,11 +3,6 @@ var canvas, context;
 function canvasSetup(){
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d");
-    
-    let h1 = window.innerHeight;
-    let w1 = window.innerWidth*0.95;
-    canvas.height = h1;
-    canvas.width = w1;
 }
 
 function Particle(x, y, r, vel, created){
