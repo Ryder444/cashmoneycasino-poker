@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=1200px, initial-scale=1.0">
         <style type="text/css">
             
+            //flex (js), transforms (in js and keyframes), animations (js and keyframes)
+            //-webkit-, -ms-, -moz-
+            
             /* fonts */
             @font-face {
                 font-family: "RomanFont Bold";
@@ -72,14 +75,115 @@
                 font-family: "RomanFont";
                 padding: 5px;
                 padding-left: 20px;
-                font-size: 60px;
                 color: gold;
-                text-shadow: 1px 0px 0px black;
                 z-index: 9999;
                 display: flex;
                 -webkit-display: flex;
                 -ms-display: flex;
                 -moz-display: flex;
+            }
+            
+            #title{
+                font-family: "RomanFont";
+                font-size: 60px;
+                color: gold;
+                text-shadow: 1px 0px 0px black;
+                text-decoration: none;
+                padding-right: 30px;
+            }
+            
+            .hlinks{
+                text-shadow: -1px 0px 0px gold;
+                color: black;
+                font-size: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 2s;
+            }
+            
+            .hlinks:hover{
+                transform: scale(1.2);
+            }
+            
+            .fa{
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+                text-align: center;
+                padding: 10px;
+                transition: transform 0.5s;
+                border-radius: 50%;  
+                width: 20px;
+            }
+            
+            .fa:hover{
+                transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
+            }
+            
+            #fbicon{
+                background-color: #3B5998;
+                color: white;
+            }
+            #ppicon{
+                background-color: #3b7bbf;
+                color: white;
+            }
+            #steamicon{
+                color: white;
+                background-color: black;
+            }
+            
+            #icons{
+                flex-grow: 1;
+                text-align: right;
+                padding: 20px;
+            }
+
+            #notification{
+              background: #3b7bbf;
+              display: flex;
+              -webkit-display: flex;
+              -moz-display: flex;
+              -ms-display: flex;
+              border-radius: 4px;
+              padding-left: 28px;
+              position: absolute;
+              align-items: center;
+              -webkit-align-items: center;
+              -moz-align-items: center;
+              -ms-align-items: center;
+              left: -163px;
+              top: 78px;
+              font-size: 17px;
+              color: black;
+              font-family: Ariel;
+              text-shadow: none;
+            }
+            
+            #notification-after{
+              border: solid transparent;
+              top: -30px;
+              left: -65px;
+              content: " ";
+              height: 0;
+              width: 0;
+              position: relative;
+              border-bottom-color: #3b7bbf;
+              border-width: 15px;
+            }
+            
+            #notbox{
+                position: relative;
+                display: none;
+                height: 0px;
+                transform-origin: -90px 70px;
             }
             
             #bodycontainer{
@@ -101,7 +205,7 @@
             }
             
             #table{
-                width: 100%;
+                width: 101%;
                 min-height: 500px;
                 background-size: cover;
                 background-repeat: no-repeat;
@@ -495,82 +599,6 @@
                 
             }
             
-           .fa{
-                text-decoration: none;
-                color: black;
-                font-size: 20px;
-                text-align: center;
-                padding: 10px;
-                transition: transform 0.5s;
-                border-radius: 50%;  
-                width: 20px;
-            }
-            
-            .fa:hover{
-                transform: scale(1.2);
-                -webkit-transform: scale(1.2);
-                -moz-transform: scale(1.2);
-                -ms-transform: scale(1.2);
-            }
-            
-            #fbicon{
-                background-color: #3B5998;
-                color: white;
-            }
-            #ppicon{
-                background-color: #3b7bbf;
-                color: white;
-            }
-            #steamicon{
-                color: white;
-                background-color: black;
-            }
-            
-            #icons{
-                flex-grow: 1;
-                text-align: right;
-                padding-right: 15px;
-            }
-
-            #notification{
-              background: #3b7bbf;
-              display: flex;
-              -webkit-display: flex;
-              -moz-display: flex;
-              -ms-display: flex;
-              border-radius: 4px;
-              padding-left: 28px;
-              position: absolute;
-              align-items: center;
-              -webkit-align-items: center;
-              -moz-align-items: center;
-              -ms-align-items: center;
-              left: -168.5px;
-              top: 90px;
-              font-size: 17px;
-              color: black;
-              font-family: Ariel;
-              text-shadow: none;
-            }
-            
-            #notification-after{
-              border: solid transparent;
-              top: -30px;
-              left: -65px;
-              content: " ";
-              height: 0;
-              width: 0;
-              position: relative;
-              border-bottom-color: #3b7bbf;
-              border-width: 15px;
-            }
-            
-            #notbox{
-                position: relative;
-                display: none;
-                height: 0px;
-                transform-origin: -95px 75px;
-            }
             
             #startingbetdiv{
                 width: 90%;
@@ -595,7 +623,6 @@
             #startingbet{
                 width: 35%;
             }
-            
             
             @keyframes dealcard1{
                 0%{left: -50%; top: -150%; transform: scale(0.7)}
@@ -836,7 +863,8 @@
     </head>
     <body onload="onload()">
         <div id="header">
-            Cash Money Casino
+            <a href="index.html" id="title">Cash Money Casino</a>
+            <a href="donorlist.html" class="hlinks">Top Donors</a>
             <div id="icons">
                 <a href="#" class="fa fa-facebook" id="fbicon"></a>
                 <a href="https://paypal.me/DarbyEdwards/5" class="fa fa-paypal" id="ppicon"></a>
@@ -942,7 +970,7 @@
             BANK <br><div id="money">$500</div>
             <div id="currentbet"></div>
             <div id="deal" onclick="deal()">DEAL</div>
-            <div id="startingbetdiv">Starting bet: <input type="number" value="50" step="50" id="startingbet"></div>
+            <div id="startingbetdiv">Starting bet: <input type="number" value="50" step="50" min="50" id="startingbet"></div>
         </div>
         <div id="reset" onclick="reset()">New Game!</div>
         <canvas style="display: none" id="canvas"></canvas>
@@ -1010,8 +1038,13 @@
             function deal(){
                 if(dealt == false){
                     
-                    startingbet = parseInt(document.getElementById("startingbet").value);
-                    currentbet = parseInt(startingbet);
+                    if(document.getElementById("startingbet").value > 0){
+                        startingbet = parseInt(document.getElementById("startingbet").value);
+                        currentbet = parseInt(startingbet);
+                    }else{
+                        startingbet = 50;
+                        currentbet = startingbet;
+                    }
                     
                     document.getElementById("startingbetdiv").style.display = "none";
                     
