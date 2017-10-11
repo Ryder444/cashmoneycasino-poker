@@ -1,0 +1,318 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script type="text/javascript" src="fireworks.js"></script>
+        <meta name="viewport" content="width=1200px, initial-scale=1.0">
+        <style type="text/css">
+            
+            //flex (js), transforms (in js and keyframes), animations (js and keyframes)
+            //-webkit-, -ms-, -moz-
+            
+            /* fonts */
+            @font-face {
+                font-family: "RomanFont Bold";
+                src: url("Font/CinzelDecorative-Bold.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont";
+                src: url("Font/CinzelDecorative-Regular.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont Black";
+                src: url("Font/CinzelDecorative-Black.ttf");
+            }
+            
+            body{
+                padding: 0;
+                margin: 0;
+                background-image: url("images/background3.jpg");
+                background-repeat: repeat-y;
+                background-size: 100% auto;
+            }
+            
+            /* scroll bars*/
+            
+            body::-webkit-scrollbar-track
+            {
+                background-color: "gold";
+            }
+
+            body::-webkit-scrollbar
+            {
+                width: 5px;
+                background-color: white;
+            }
+
+            body::-webkit-scrollbar-thumb
+            {
+                background-color: gold
+            }
+            
+            #header{
+                width: 100%;
+                box-sizing: border-box;
+                position: fixed;
+                height: 100px;
+                background-color: white;
+                border-bottom: 15px solid gold;
+                font-family: "RomanFont";
+                padding: 5px;
+                padding-left: 20px;
+                color: gold;
+                z-index: 9999;
+                display: flex;
+                -webkit-display: flex;
+                -ms-display: flex;
+                -moz-display: flex;
+            }
+            
+            #title{
+                font-family: "RomanFont";
+                font-size: 60px;
+                color: gold;
+                text-shadow: 1px 0px 0px black;
+                text-decoration: none;
+                padding-right: 30px;
+            }
+            
+            .hlinks{
+                text-shadow: -1px 0px 0px gold;
+                color: black;
+                font-size: 20px;
+                padding-left: 15px;
+                padding-right: 15px;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 2s;
+            }
+            
+            .hlinks:hover{
+                transform: scale(1.2);
+            }
+            
+            .fa{
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+                text-align: center;
+                padding: 10px;
+                transition: transform 0.5s;
+                border-radius: 50%;  
+                width: 20px;
+            }
+            
+            .fa:hover{
+                transform: scale(1.2);
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
+            }
+            
+            #fbicon{
+                background-color: #3B5998;
+                color: white;
+            }
+            #ppicon{
+                background-color: #3b7bbf;
+                color: white;
+            }
+            #steamicon{
+                color: white;
+                background-color: black;
+            }
+            
+            #icons{
+                flex-grow: 1;
+                text-align: right;
+                padding: 20px;
+            }
+
+            #notification{
+              background: #3b7bbf;
+              display: flex;
+              -webkit-display: flex;
+              -moz-display: flex;
+              -ms-display: flex;
+              border-radius: 4px;
+              padding-left: 28px;
+              position: absolute;
+              align-items: center;
+              -webkit-align-items: center;
+              -moz-align-items: center;
+              -ms-align-items: center;
+              left: -163px;
+              top: 78px;
+              font-size: 17px;
+              color: black;
+              font-family: Ariel;
+              text-shadow: none;
+            }
+            
+            #notification-after{
+              border: solid transparent;
+              top: -30px;
+              left: -65px;
+              content: " ";
+              height: 0;
+              width: 0;
+              position: relative;
+              border-bottom-color: #3b7bbf;
+              border-width: 15px;
+            }
+            
+            #notbox{
+                position: relative;
+                display: none;
+                height: 0px;
+                transform-origin: -90px 70px;
+            }
+            
+            #bodycontainer{
+                width: 100%;
+                display: flex;
+                -webkit-display: flex;
+                -ms-display: flex;
+                -moz-display: flex;
+                justify-content: center;
+                -webkit-justify-content: center;
+                -ms-justify-content: center;
+                -moz-justify-content: center;
+            }
+            
+            #donors{
+                margin: 100px auto;
+                width: 70%;
+                font-family: "RomanFont";
+                font-size: 50px;
+                text-align: center;
+                color: gold;
+                text-shadow:
+      0 1px 0 #2e2e2e, 
+      0 2px 0 #2c2c2c, 
+      0 3px 0 #2a2a2a, 
+      0 4px 0 #282828, 
+      0 5px 0 #262626, 
+      0 6px 0 #242424, 
+      0 7px 0 #222, 
+      0 8px 0 #202020, 
+      0 9px 0 #1e1e1e, 
+      0 10px 0 #1c1c1c, 
+      0 11px 0 #1a1a1a, 
+      0 12px 0 #181818, 
+      0 13px 0 #161616, 
+      0 14px 0 #141414, 
+      0 15px 0 #121212, 
+      0 22px 30px rgba(0, 0, 0, 0.9);
+            }
+            
+            #donors ol li{
+                color: black;
+                text-align: center;
+                font-style: italic;
+                font-size: 35px;
+                padding: 20px;
+                letter-spacing: 30px;
+                text-shadow: 2px 2px 5px darkgreen;
+            }
+            
+            #donors ol{
+                list-style: none;
+            }
+            
+            @keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-webkit-keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-moz-keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            @-ms-keyframes notification{
+                0%{transform: scale(0)}
+                9%{transform: scale(1.2)}
+                11%{transform: scale(1)}
+                100%{transform: scale(1)}
+            }
+            
+        </style>
+        <script type="text/javascript" src="fireworks.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <a href="index.html" id="title">Cash Money Casino</a>
+            <a href="donorlist.html" class="hlinks">Top Donors</a>
+            <div id="icons">
+                <a href="#" class="fa fa-facebook" id="fbicon"></a>
+                <a href="https://paypal.me/DarbyEdwards/5" class="fa fa-paypal" id="ppicon"></a>
+                <a href="https://steamcommunity.com/tradeoffer/new/?partner=226682562&token=36Djf6Tb" class="fa fa-steam" id="steamicon"></a>
+            </div>
+            <div id="notbox">
+                <div id="notification">Donate please!<div id="notification-after"></div></div>
+            </div>
+        </div>
+        <div id="bodycontainer">
+            <div id="donors">
+                <h2>Top Donors:</h1>
+                <ol>
+                    <li>1. Jack Hobson</li>
+                    <li>2. Gabe Willesee</li>
+                </ol>
+            </div>
+        </div>
+        <canvas style="display: none" id="canvas"></canvas>
+    </body>
+    <head>
+        <script>
+            function fireworks(){
+                canvas = document.getElementById("canvas");
+                context = canvas.getContext("2d");
+                
+                document.getElementById("canvas").style.display = "block";
+                document.getElementById("canvas").style.position = "absolute";
+                document.getElementById("canvas").style.top = "0%";
+                document.getElementById("canvas").style.left = "0%";
+                
+                let w1 = window.innerWidth*0.95;
+                canvas.height = window.innerHeight;
+                canvas.width = w1;
+                canvasSetup();
+
+                var fireworks = [];
+                fireworks.push(new Firework);
+                fireworks.push(new Firework);
+                fireworks.push(new Firework);
+
+                var interval = setInterval(function(){  
+                    context.clearRect(0, 0, canvas.width, canvas.height);
+                    fireworks[0].update();
+                    fireworks[0].show();
+                    fireworks[1].update();
+                    fireworks[1].show(); 
+                    fireworks[2].update();
+                    fireworks[2].show(); 
+                }, 15);
+                
+                setTimeout(function(){
+                    document.getElementById("canvas").style.display = "none";
+                    clearInterval(interval);
+                }, 3200);
+            }
+            
+            setInterval(fireworks(), 30000);
+        </script> 
+    </head>
+</html>
