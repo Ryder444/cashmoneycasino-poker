@@ -1320,26 +1320,35 @@
             }
             
             function raise(name){
-                if(dealt == true && name == turn){
-                currentbet += startingbet;
-                needbetmessage = false;
-                bet(name);
+                let bankname = eval(name + "bank");
+                if(bankname - (currentbet+startingbet) >= 0){
                 
-                let n;
-                switch(name){
-                    case "Player":
-                        n = "Player";
-                        break;
-                        
-                    case "CPU1":
-                        n = "Jack";
-                        break;
-                        
-                    case "CPU2":
-                        n = "Jill";
-                        break;
-                           }
-                logpara.innerHTML += "<br>"+n+" raises bet to $" + currentbet;
+                if(dealt == true && name == turn){
+                
+                    currentbet += startingbet;
+                    
+                    needbetmessage = false;
+                    bet(name);
+
+                    let n;
+                    switch(name){
+                        case "Player":
+                            n = "Player";
+                            break;
+
+                        case "CPU1":
+                            n = "Jack";
+                            break;
+
+                        case "CPU2":
+                            n = "Jill";
+                            break;
+                               }
+                    logpara.innerHTML += "<br>"+n+" raises bet to $" + currentbet;
+                }
+                }
+                else{
+                    alert("You do not have enough money to raise the bet to $" + (currentbet + startingbet));
                 }
             }
             
