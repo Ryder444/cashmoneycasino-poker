@@ -1347,7 +1347,7 @@
                     logpara.innerHTML += "<br>"+n+" raises bet to $" + currentbet;
                 }
                 }
-                else{
+                else if(turn == name){
                     alert("You do not have enough money to raise the bet to $" + (currentbet + startingbet));
                 }
             }
