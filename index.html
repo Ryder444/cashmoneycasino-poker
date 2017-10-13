@@ -65,6 +65,18 @@
                 background-color: gold
             }
             
+            input[type="number"]{
+                color: gold;
+                font-family: "RomanFont Black";
+                border: none;
+                background-color: transparent;
+            }
+            
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button {
+                opacity: 1;
+            }
+            
             #header{
                 width: 100%;
                 box-sizing: border-box;
@@ -1037,7 +1049,6 @@
             
             function deal(){
                 if(dealt == false){
-                    
                     if(document.getElementById("startingbet").value > 0){
                         startingbet = parseInt(document.getElementById("startingbet").value);
                         currentbet = parseInt(startingbet);
@@ -1045,6 +1056,12 @@
                         startingbet = 50;
                         currentbet = startingbet;
                     }
+                    
+                    Playerbank -= currentbet;
+                    
+                    
+                    document.getElementById("money").innerHTML = "$" + Playerbank;
+                    
                     
                     document.getElementById("startingbetdiv").style.display = "none";
                     
@@ -1082,6 +1099,33 @@
                     let x = Math.random()*20;
                     let y = Math.random()*20;
                     document.getElementById("cpu2bet").innerHTML += "<div id='CPU2chip"+i+"' class='bet2' style='transform: translateX("+x+"px) translateY("+y+"px)'></div>";
+                }
+                
+                let numberchips = currentbet / 50;
+                let start = Playerchipsbet + 1;
+                    for(i = start; i <= numberchips + start - 1; i++){
+                        let chipname = "chip" + (i);
+                        document.getElementById(chipname).style.animation = "bet 1s forwards 2s";
+                        Playerchipsbet += 1;
+                        totalchips += 1;
+                    }
+
+                let numberchips2 = currentbet / 50;
+                let start2 = CPU1chipsbet + 1;
+                for(i = start2; i <= numberchips2 + start2 - 1; i++){
+                    let chipname = "CPU1chip" + (i);
+                    document.getElementById(chipname).style.animation = "bet1 1s forwards 2s";
+                    CPU1chipsbet += 1;
+                    totalchips += 1;
+                }
+
+                let numberchips3 = currentbet / 50;
+                let start3 = CPU2chipsbet + 1;
+                for(i = start3; i <= numberchips3 + start3 - 1; i++){
+                    let chipname = "CPU2chip" + (i);
+                    document.getElementById(chipname).style.animation = "bet2 1s forwards 2s";
+                    CPU2chipsbet += 1;
+                    totalchips += 1;
                 }
                 
                 
