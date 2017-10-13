@@ -37,13 +37,11 @@
             {
                 background-color: "gold";
             }
-
             #rules::-webkit-scrollbar
             {
                 width: 5px;
                 background-color: none;
             }
-
             #rules::-webkit-scrollbar-thumb
             {
                 background-color: gold
@@ -53,28 +51,14 @@
             {
                 background-color: "gold";
             }
-
             body::-webkit-scrollbar
             {
                 width: 5px;
                 background-color: white;
             }
-
             body::-webkit-scrollbar-thumb
             {
                 background-color: gold
-            }
-            
-            input[type="number"]{
-                color: gold;
-                font-family: "RomanFont Black";
-                border: none;
-                background-color: transparent;
-            }
-            
-            input[type=number]::-webkit-inner-spin-button, 
-            input[type=number]::-webkit-outer-spin-button {
-                opacity: 1;
             }
             
             #header{
@@ -157,7 +141,6 @@
                 text-align: right;
                 padding: 20px;
             }
-
             #notification{
               background: #3b7bbf;
               display: flex;
@@ -725,7 +708,6 @@
                 96%{left: 0; top: 0; transform: scale(1)}
                 100%{transform: rotateY(180deg)}
             }
-
             
             
             @keyframes dealcard5{
@@ -1049,6 +1031,7 @@
             
             function deal(){
                 if(dealt == false){
+                    
                     if(document.getElementById("startingbet").value > 0){
                         startingbet = parseInt(document.getElementById("startingbet").value);
                         currentbet = parseInt(startingbet);
@@ -1056,12 +1039,6 @@
                         startingbet = 50;
                         currentbet = startingbet;
                     }
-                    
-                    Playerbank -= currentbet;
-                    
-                    
-                    document.getElementById("money").innerHTML = "$" + Playerbank;
-                    
                     
                     document.getElementById("startingbetdiv").style.display = "none";
                     
@@ -1099,33 +1076,6 @@
                     let x = Math.random()*20;
                     let y = Math.random()*20;
                     document.getElementById("cpu2bet").innerHTML += "<div id='CPU2chip"+i+"' class='bet2' style='transform: translateX("+x+"px) translateY("+y+"px)'></div>";
-                }
-                
-                let numberchips = currentbet / 50;
-                let start = Playerchipsbet + 1;
-                    for(i = start; i <= numberchips + start - 1; i++){
-                        let chipname = "chip" + (i);
-                        document.getElementById(chipname).style.animation = "bet 1s forwards 2s";
-                        Playerchipsbet += 1;
-                        totalchips += 1;
-                    }
-
-                let numberchips2 = currentbet / 50;
-                let start2 = CPU1chipsbet + 1;
-                for(i = start2; i <= numberchips2 + start2 - 1; i++){
-                    let chipname = "CPU1chip" + (i);
-                    document.getElementById(chipname).style.animation = "bet1 1s forwards 2s";
-                    CPU1chipsbet += 1;
-                    totalchips += 1;
-                }
-
-                let numberchips3 = currentbet / 50;
-                let start3 = CPU2chipsbet + 1;
-                for(i = start3; i <= numberchips3 + start3 - 1; i++){
-                    let chipname = "CPU2chip" + (i);
-                    document.getElementById(chipname).style.animation = "bet2 1s forwards 2s";
-                    CPU2chipsbet += 1;
-                    totalchips += 1;
                 }
                 
                 
@@ -1168,7 +1118,6 @@
                         var n = Players[i]
                         var playertype = eval(n).split(',');
                         result = Math.ceil(playertype[e] / 13);
-
                         switch(result){
                             case 0:
                                 suit = "Spades";
@@ -1432,7 +1381,6 @@
                     document.getElementById("buttons").style.display = "none";
                     
                 }else{
-
                     
                   document.getElementById(divid).style.backgroundColor = "rgba(255, 255, 255, 0.5)";
                   document.getElementById(divid).style.border = "1px solid white";
@@ -1462,7 +1410,6 @@
                     
                         let a = Players.length - 1;
                         let divid2 = Players[a] + "hand";
-
                         document.getElementById(divid2).style.backgroundColor = "rgba(0, 0, 0, 0.4)";
                         document.getElementById(divid2).style.border = "";
                     }
@@ -1485,7 +1432,6 @@
                         let resultname = eval(name+"result");
                         let score = resultname[resultname.length - 1];
                         let betarea = score + ((4/5)*(10-score));
-
                         let cpubettype = Math.ceil(Math.random()*10);
                         
                         if(cpubettype < score){
@@ -1497,11 +1443,9 @@
                         else if(cpubettype >= betarea){
                             fold(name);
                         }
-
                         if(cpunumber == 2){
                             CPU2moves += 1;
                             nextTurn(0);
-
                         }else if(cpunumber == 1){
                             CPU1moves += 1;
                         }
@@ -1513,7 +1457,6 @@
                     }else{
                         fold(name);
                     }
-
                 }, 2000);  
             }
             
@@ -1533,42 +1476,34 @@
                             if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1 && handname[0].suit == handname[1].suit && handname[1].suit == handname[2].suit && handname[2].suit == handname[3].suit && handname[3].suit == handname[4].suit && handname[0].card == 10){
                                 result = ["Royal Flush", 10]
                             }
-
                         //Check for Straight Flush
                             else if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1 && handname[0].suit == handname[1].suit && handname[1].suit == handname[2].suit && handname[2].suit == handname[3].suit && handname[3].suit == handname[4].suit){
                                 result =  ["Straight Flush", 9]
                             }
-
                         //Check for Four Of A Kind
                             else if(handname[0].card == handname[3].card || handname[1].card == handname[4].card){
                                 result = ["Four Of A Kind", 8]
                             }
-
                         //Check for Full House
                             else if((handname[0].card == handname[1].card && handname[2].card == handname[4].card) || (handname[0].card == handname[2].card && handname[3].card == handname[4].card)){
                                 result = ["Full House", 7]
                             }
-
                         //Check for Flush
                             else if(handname[0].card == handname[1].card && handname[2].card == handname[1].card && handname[3].card == handname[2].card && handname[3].card == handname[4].card){
                                 result = ["Flush", 6]
                             }
-
                         //Check for Straight
                             else if((handname[1].card - handname[0].card) == 1 && (handname[2].card - handname[1].card) == 1 && (handname[3].card - handname[2].card) == 1 && (handname[4].card - handname[3].card) == 1){
                                 result = ["Straight", 5]
                             }
-
                         //Check for Three Of A Kind
                             else if((handname[0].card == handname[2].card) || (handname[1].card == handname[3].card) || (handname[2].card == handname[4].card)){
                                 result = ["Three Of A Kind", 4]
                             }
-
                         //Check for Two Pairs
                             else if((handname[0].card == handname[1].card && handname[2].card == handname[3].card) || (handname[0].card == handname[1].card && handname[3].card == handname[4].card) || (handname[1].card == handname[2].card && handname[3].card == handname[4].card)){
                                 result = ["Two Pairs", 3]
                             }
-
                         //Check for One Pair
                             else if((handname[0].card == handname[1].card) || (handname[1].card == handname[2].card) || (handname[2].card == handname[3].card) || (handname[3].card == handname[4].card)){
                                 result = ["One Pair", 2]
@@ -1751,12 +1686,10 @@
                     currentpool = 0;
                     turn = "Player";
                     round = 1;
-
                     CPU1chipsbet = 0;
                     CPU2chipsbet = 0;
                     Playerchipsbet = 0;
                     totalchips = 0;
-
                     Playerfolded = false;
                     CPU1folded = false;
                     CPU2folded = false;
@@ -1798,14 +1731,11 @@
                 canvas.height = window.innerHeight;
                 canvas.width = w1;
                 canvasSetup();
-
                 var fireworks = [];
                 fireworks.push(new Firework);
                 fireworks.push(new Firework);
                 fireworks.push(new Firework);
-
                 var counter = 0;
-
                 var interval = setInterval(function(){  
                     context.clearRect(0, 0, canvas.width, canvas.height);
                     fireworks[0].update();
