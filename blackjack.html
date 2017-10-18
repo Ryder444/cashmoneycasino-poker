@@ -1,0 +1,329 @@
+<html>
+    <head>
+        <style>
+            :root{
+                font-size: 5px;
+            }
+            
+            @media (max-width: 700px){
+                :root{
+                    font-size: 2.5px;
+                }
+            }
+            
+            @font-face {
+                font-family: "RomanFont Bold";
+                src: url("Font/CinzelDecorative-Bold.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont";
+                src: url("Font/CinzelDecorative-Regular.ttf");
+            }
+            
+            @font-face{
+                font-family: "RomanFont Black";
+                src: url("Font/CinzelDecorative-Black.ttf");
+            }
+            
+            body{
+                background-image: url("Images/background3.jpg");
+                background-size: contain;
+                font-family: "RomanFont";
+            }
+            
+            #bodytab{
+                width: 100%;
+                margin: 0 auto;
+                margin-top: 21rem;
+                text-align: center;
+            }
+            
+            #bodytab img{
+                padding: 2rem;
+                width: 30rem;
+                
+            }
+            
+            #header{
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 20rem;
+                font-size: 5rem;
+                width: 100vw;
+                box-sizing: border-box;
+                background-color: white;
+                border-bottom: 3rem solid gold;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 3rem;
+                color: gold;
+                text-shadow: 1px 1px 0px black;
+            }
+            
+            #content h2{
+                font-size: 3rem;
+                padding: 0;
+            }
+            
+            #hit{
+                display: none;
+            }
+            #hold{
+                display: none;
+            }
+            
+            #result{
+                font-size: 10rem;
+            }
+            
+            #bank{
+                font-size: 5rem;
+                color: green;
+                margin-right: 15rem;
+                text-shadow: none;
+            }
+            
+            
+            input[type="submit"]{
+                background-color: rgba(0, 0, 0, 0.4);
+                color: gold;
+                height: 7rem;
+                width: 20rem;
+                border: none;
+            }
+            
+            input[type="submit"]:hover{
+                cursor: pointer;
+                border: 1px solid gold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="bodytab">
+            <span id="header">
+                <h1>Cash Money Blackjack</h1>
+                <div id="bank">Bank: $500</div>
+            </span>
+            <div id="content">
+                <h2>Dealer's cards:</h2>
+                <div id="CPUcards">
+                    <img src="Images/Cards/card_back.png" id="CPUcard1">
+                    <img src="Images/Cards/card_back.png" id="CPUcard2">
+                </div>
+                
+                <input type="submit" value="Deal" onclick="deal()" id="deal">
+                <input type="submit" value="Hit" onclick="hit('Player')" id="hit">
+                <input type="submit" value="Hold" onclick="hold()" id="hold">
+                
+                <h2>Your cards:</h2>
+                <div id="Playercards">
+                    <img src="Images/Cards/card_back.png">
+                    <img src="Images/Cards/card_back.png">
+                </div>
+                <div id="result"></div>
+                </div>
+        </div>
+            </div>
+        </div>
+    </body>
+    <head>
+        <script type="text/javascript">
+            var Playercards = [];
+            var CPUcards = [];
+            var deck = [];
+            var bet;
+            var bank = 500;
+            
+            var playerover = false;
+            var cpuover = false;
+            
+            function deal(){
+                
+                Playercards = [];
+                CPUcards = [];
+                deck = [];
+                playerover = false;
+                cpuover = false;
+                bet = 0;
+                
+                document.getElementById("Playercards").innerHTML = "";
+                document.getElementById("result").innerHTML = "";
+                
+                GenerateDeck();
+                hit("Player");
+                hit("Player");
+                hit("CPU");
+                hit("CPU");
+                
+                document.getElementById("deal").style.display = "none";
+                document.getElementById("hold").style.display = "inline-block";
+                document.getElementById("hit").style.display = "inline-block";
+                
+                document.getElementById("CPUcard1").src = "Images/Cards/card_back.png";
+                document.getElementById("CPUcard2").src = "Images/Cards/card_back.png";
+                
+                if(Playercards[0].card + Playercards[1].card > 21){
+                    deal();
+                }
+                else if(Playercards[0].card + Playercards[1].card == 21){
+                    console.log("winner");
+                }
+                
+                let tempbet = prompt("How much would you like to bet? (Note: your bet will be rounded up to the nearest integer.)");
+                if(tempbet == undefined || tempbet == null){
+                    return;
+                }
+                else{
+                    bet = Math.ceil(Number(tempbet));
+                    if(!isNaN(bet)){
+                        if(bet > bank)
+                        {
+                            alert("You do not have enough funds!");
+                            deal();
+                        }
+                        else if(bet < 10){
+                            if(bank < 10){
+                                window.location.reload();
+                            }else{
+                                alert("Minimum bet is $10");
+                                deal();
+                            }
+                        }
+                        else{
+                            bank -= bet;
+                            document.getElementById("bank").innerHTML = "Bank: $" + bank;
+                        }
+                    }     
+                    else{
+                        alert("That is not a valid number!");
+                        deal();
+                    }
+                }
+            }
+            
+            function GenerateDeck(){
+                //Generate array with 52 numbers
+                for(i = 1; i <= 52; i++){
+                    deck.push(i)
+                }
+            }
+            
+            function hit(playername){
+                let selection = Math.floor(Math.random()*deck.length);
+                let tempcard = deck[selection];
+                deck.splice(selection, 1);
+                
+                result = Math.ceil(tempcard / 13);
+                
+                let value;
+                let suit;
+                switch(result){
+                            case 0:
+                                suit = "Spades";
+                                value = tempcard;
+                                break;
+                                
+                            case 1:
+                                suit = "Spades";
+                                value = tempcard;
+                                break;
+                                
+                            case 2:
+                                suit = "Hearts";
+                                value = tempcard - (1*13);
+                                break;
+                                
+                            case 3:
+                                suit = "Clubs";
+                                value = tempcard - (2*13);
+                                break;
+                                
+                            case 4:
+                                suit = "Diamonds";
+                                value = tempcard - (3*13);
+                                break;
+                        }
+                let newname = eval(playername + "cards");
+                newname.push({card:value, suit:suit});
+                
+                if(playername == "Player"){
+                    
+                    let newtotal = 0;
+                    for(i = 0; i < Playercards.length; i++){
+                        newtotal += Playercards[i].card;
+                    }
+                    console.log(newtotal);
+                    
+                    if(newtotal > 21){
+                        document.getElementById("result").innerHTML = "House wins!";
+                        document.getElementById("deal").style.display = "inline-block";
+                        document.getElementById("hold").style.display = "none";
+                        document.getElementById("hit").style.display = "none";
+                        playerover = true;
+                    }
+                    else if(newtotal == 21){
+                        console.log("winner");
+                        bank += bet*2;
+                        document.getElementById("bank").innerHTML = "Bank: $" + bank;
+                    }
+                    document.getElementById("Playercards").innerHTML += "<img src='Images/Cards/" + suit + value + ".png'>";
+                }
+                
+            }
+            
+            function hold(){
+                document.getElementById("CPUcard1").src = "Images/Cards/" + CPUcards[0].suit + CPUcards[0].card + ".png";
+                document.getElementById("CPUcard2").src = "Images/Cards/" + CPUcards[1].suit + CPUcards[1].card + ".png";
+                
+                let playertotal = 0;
+                    for(i = 0; i < Playercards.length; i++){
+                        playertotal += Playercards[i].card;
+                    }
+                
+                let cputotal = 0;
+                    for(i = 0; i < CPUcards.length; i++){
+                        cputotal += CPUcards[i].card;
+                    }
+                
+                var update = document.getElementById("result");
+                
+                if(playertotal > cputotal && playerover == false){
+                    console.log("Player wins");
+                    update.innerHTML = "You win!";
+                    bank += bet*2;
+                    document.getElementById("bank").innerHTML = "Bank: $" + bank;
+                }
+                else if(playerover == true){
+                    console.log("House wins");
+                    update.innerHTML = "House wins!";
+                }
+                else if(cpuover == true){
+                    console.log("Player wins");
+                    update.innerHTML = "You win!";
+                    bank += bet*2;
+                    document.getElementById("bank").innerHTML = "Bank: $" + bank;
+                }
+                else if(playertotal == cputotal){
+                    console.log("it is a tie");
+                    update.innerHTML = "It is a tie!";
+                    bank += bet;
+                    document.getElementById("bank").innerHTML = "Bank: $" + bank;
+                }
+                else{
+                    console.log("House wins");
+                    update.innerHTML = "House wins!";
+                }
+                
+                document.getElementById("deal").style.display = "inline-block";
+                document.getElementById("hold").style.display = "none";
+                document.getElementById("hit").style.display = "none";
+            }
+            
+            
+        </script>
+    </head>
+</html>
