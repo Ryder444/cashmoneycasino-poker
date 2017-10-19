@@ -119,7 +119,7 @@
                 <input type="submit" value="Hit" onclick="hit('Player')" id="hit">
                 <input type="submit" value="Hold" onclick="hold()" id="hold">
                 
-                <h2>Your cards:</h2>
+                <h2 id="your">Your cards:</h2>
                 <div id="Playercards">
                     <img src="Images/Cards/card_back.png">
                     <img src="Images/Cards/card_back.png">
@@ -140,9 +140,11 @@
             
             var playerover = false;
             var cpuover = false;
+            var running = false;
             
             function deal(){
                 
+                running = false;
                 Playercards = [];
                 CPUcards = [];
                 deck = [];
@@ -158,6 +160,7 @@
                 hit("Player");
                 hit("CPU");
                 hit("CPU");
+                running = true;
                 
                 document.getElementById("deal").style.display = "none";
                 document.getElementById("hold").style.display = "inline-block";
@@ -168,9 +171,6 @@
                 
                 if(Playercards[0].card + Playercards[1].card > 21){
                     deal();
-                }
-                else if(Playercards[0].card + Playercards[1].card == 21){
-                    console.log("winner");
                 }
                 
                 let tempbet = prompt("How much would you like to bet? (Note: your bet will be rounded up to the nearest integer.)");
@@ -256,28 +256,33 @@
                     for(i = 0; i < Playercards.length; i++){
                         newtotal += Playercards[i].card;
                     }
+                    document.getElementById("your").innerHTML = "Your Cards: (" + newtotal + ")";
                     console.log(newtotal);
                     
-                    if(newtotal > 21){
-                        document.getElementById("result").innerHTML = "House wins!";
-                        document.getElementById("deal").style.display = "inline-block";
-                        document.getElementById("hold").style.display = "none";
-                        document.getElementById("hit").style.display = "none";
-                        playerover = true;
-                    }
-                    else if(newtotal == 21){
+                    if(newtotal == 21){
                         console.log("winner");
                         bank += bet*2;
                         document.getElementById("bank").innerHTML = "Bank: $" + bank;
                     }
                     document.getElementById("Playercards").innerHTML += "<img src='Images/Cards/" + suit + value + ".png'>";
+                    
+                    if(running == true){
+                        if(newtotal > 21 && cpuover == false){
+                            document.getElementById("result").innerHTML = "House wins!";
+                            console.log("house wins 1");
+                            document.getElementById("deal").style.display = "inline-block";
+                            document.getElementById("hold").style.display = "none";
+                            document.getElementById("hit").style.display = "none";
+                            showCPUcards();
+                            playerover = true;
+                        }
+                    }
                 }
                 
             }
             
             function hold(){
-                document.getElementById("CPUcard1").src = "Images/Cards/" + CPUcards[0].suit + CPUcards[0].card + ".png";
-                document.getElementById("CPUcard2").src = "Images/Cards/" + CPUcards[1].suit + CPUcards[1].card + ".png";
+                showCPUcards();
                 
                 let playertotal = 0;
                     for(i = 0; i < Playercards.length; i++){
@@ -289,33 +294,34 @@
                         cputotal += CPUcards[i].card;
                     }
                 
+                if(cputotal > 21){
+                    cpuover = true;
+                }
+                
                 var update = document.getElementById("result");
                 
                 if(playertotal > cputotal && playerover == false){
-                    console.log("Player wins");
                     update.innerHTML = "You win!";
                     bank += bet*2;
                     document.getElementById("bank").innerHTML = "Bank: $" + bank;
                 }
-                else if(playerover == true){
-                    console.log("House wins");
+                else if(playerover == true && cpuover == false){
                     update.innerHTML = "House wins!";
+                    console.log("House wins 2");
                 }
                 else if(cpuover == true){
-                    console.log("Player wins");
                     update.innerHTML = "You win!";
                     bank += bet*2;
                     document.getElementById("bank").innerHTML = "Bank: $" + bank;
                 }
-                else if(playertotal == cputotal){
-                    console.log("it is a tie");
+                else if(playertotal == cputotal && cpuover == false){
                     update.innerHTML = "It is a tie!";
                     bank += bet;
                     document.getElementById("bank").innerHTML = "Bank: $" + bank;
                 }
-                else{
-                    console.log("House wins");
+                else {
                     update.innerHTML = "House wins!";
+                    console.log("House wins3");
                 }
                 
                 document.getElementById("deal").style.display = "inline-block";
@@ -323,6 +329,10 @@
                 document.getElementById("hit").style.display = "none";
             }
             
+            function showCPUcards(){
+                document.getElementById("CPUcard1").src = "Images/Cards/" + CPUcards[0].suit + CPUcards[0].card + ".png";
+                document.getElementById("CPUcard2").src = "Images/Cards/" + CPUcards[1].suit + CPUcards[1].card + ".png";
+            }
             
         </script>
     </head>
